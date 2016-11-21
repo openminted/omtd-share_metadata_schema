@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by ILSP/Athena R.C. -->
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
+	<xs:include schemaLocation="./OMTD-SHARE-ResourceCommon.xsd"/>
+	<xs:complexType name="languageDescriptionInfoType">
+		<xs:annotation>
+			<xs:appinfo>
+				<render-short>{identificationInfo/resourceName}</render-short>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="resourceType" type="xs:string" fixed="languageDescription">
+				<xs:annotation>
+					<xs:documentation/>
+					<xs:appinfo>
+						<label>Resource type</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ms:identificationInfo"/>
+			<xs:element ref="ms:contactInfo" maxOccurs="1"/>
+			<xs:element ref="ms:versionInfo" minOccurs="0"/>
+			<xs:element name="validationInfos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:validationInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="ms:usageInfo" minOccurs="0"/>
+			<xs:element ref="ms:resourceDocumentationInfo" minOccurs="0"/>
+			<xs:element ref="ms:resourceCreationInfo" minOccurs="0"/>
+			<xs:element name="distributionInfos">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:datasetDistributionInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="languageDescriptionType">
+				<xs:annotation>
+					<xs:documentation>The type of the language description</xs:documentation>
+					<xs:appinfo>
+						<relation>one-to-one</relation>
+						<label>Language description type</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+						<xs:enumeration value="grammar">
+							<xs:annotation>
+								<xs:documentation>Value for languageDescriptionType; to be used for resources describing the morphological, syntactic etc. system (or part therof) of a language</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="other"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element ref="ms:languageDescriptionEncodingInfo" minOccurs="0"/>
+			<xs:element ref="ms:languageDescriptionOperationInfo" minOccurs="0"/>
+			<xs:element ref="ms:languageDescriptionPerformanceInfo" minOccurs="0"/>
+			<xs:element name="languageDescriptionMediaType">
+				<xs:annotation>
+					<xs:documentation>Groups information on the media type-specific components for language descriptions</xs:documentation>
+					<xs:appinfo>
+						<relation>one-to-one</relation>
+						<label>Media type component of language description</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:languageDescriptionTextInfo"/>
+						<!--<xs:element ref="ms:languageDescriptionAudioInfo"/>
+                            <xs:element ref="ms:languageDescriptionTextNumericalInfo"/>
+    -						-->
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="languageDescriptionEncodingInfoType">
+		<xs:annotation>
+			<xs:appinfo>
+				<relation>one-to-one</relation>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="encodingLevels">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:encodingLevel" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="standardsBestPractices" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="conformanceToStandardsBestPractices" type="ms:conformanceToStandardsBestPractices" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Specifies the standards or the best practices to which the tagset used for the annotation conforms</xs:documentation>
+								<xs:appinfo>
+									<label>Conformance to standards / best practices</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="theoreticModels" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:theoreticModel" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="formalisms" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="formalism" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Reference (name, bibliographic reference or link to url) for the formalism used for the creation/enrichment of the resource (grammar or tool/service)</xs:documentation>
+								<xs:appinfo>
+									<label>Formalism</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="tasks" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="task" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>An indication of the task performed by the grammar</xs:documentation>
+								<xs:appinfo>
+									<label>Task</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+									<xs:enumeration value="anaphoraResolution">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars used for anaphora resolution</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="chunking">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars used for chunking (shallow syntactic parsing)</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="parsing">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars used for parsing</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="npRecognition">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars used for identifying noun phrases</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="titlesParsing">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars that are restricted to parsing titles</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="definitionsParsing">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars that are restricted to parsing definitions</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="analysis">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars used for analysis tasks</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="generation">
+										<xs:annotation>
+											<xs:documentation>Value for task; for grammars used for language generation</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="other"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="grammaticalPhenomenaCoverages" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="grammaticalPhenomenaCoverage" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>An indication of the grammatical phenomena covered by the grammar</xs:documentation>
+								<xs:appinfo>
+									<label>Grammatical phenomena coverage</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+									<xs:enumeration value="clauseStructure">
+										<xs:annotation>
+											<xs:documentation>Value for grammaticalPheonomenaCoverage; for grammars that can recognise the structure of clauses</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="ppAttachment">
+										<xs:annotation>
+											<xs:documentation>Value for grammaticalPheonomenaCoverage; for grammars that cover pp-attachment (attachment of prepositional phrases)</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="npStructure">
+										<xs:annotation>
+											<xs:documentation>Value for grammaticalPheonomenaCoverage; for grammars that cover structure of noun phrases</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="coordination">
+										<xs:annotation>
+											<xs:documentation>Value for grammaticalPheonomenaCoverage; for grammars that cover coordination</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="anaphora">
+										<xs:annotation>
+											<xs:documentation>Value for grammaticalPheonomenaCoverage; for grammars that cover anaphora problems</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="other"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="weightedGrammar" type="xs:boolean" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Indicates whether the grammar contains numerical weights (incl. probabilities)</xs:documentation>
+								<xs:appinfo>
+									<relation>one-to-one</relation>
+									<label>Weighted grammar</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="languageDescriptionOperationInfoType">
+		<xs:sequence>
+			<xs:element ref="ms:runningEnvironmentInfo" minOccurs="0"/>
+			<xs:element name="relatedLexiconInfo" type="ms:relatedLexiconInfoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Groups together information on requirements for lexica set by the LanguageDescriptions</xs:documentation>
+					<xs:appinfo>
+						<label>Related lexicon</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="languageDescriptionPerformanceInfoType">
+		<xs:sequence>
+			<xs:element name="robustness" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Free text statement on the robustness of the grammar (how well the grammar can cope with misspelt/unknown etc. input, i.e. whether it can produce even partial interpretations of the input)</xs:documentation>
+					<xs:appinfo>
+						<label>Robustness</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="500"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="shallowness" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Free text statement on the shallowness of the grammar (how deep the syntactic analysis performed by the grammar can be)</xs:documentation>
+					<xs:appinfo>
+						<label>Shallowness</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="output" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the output of the operation of the grammar is a statement of grammaticality (grammatical/ungrammatical) or structures (interpretation of the input)</xs:documentation>
+					<xs:appinfo>
+						<label>Output</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="500"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="languageDescriptionTextInfoType">
+		<xs:sequence>
+			<xs:element name="mediaType" type="xs:string" fixed="text">
+				<xs:annotation>
+					<xs:documentation>Specifies the media type of the resource and basically corresponds to the physical medium of the content representation. Each media type is described through a distinctive set of features. A resource may consist of parts attributed to different types of media. A tool/service may take as input/output more than one different media types.</xs:documentation>
+					<xs:appinfo>
+						<label>Media type</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ms:lingualityInfo"/>
+			<xs:element name="languages">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:languageInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="metalanguages" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:metalanguageInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="modalities" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:modalityInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="sizes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:sizeInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="domains" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:domainInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="timeClassifications" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:timeCoverageInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="geographicClassifications" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:geographicCoverageInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="ms:creationInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="relatedLexiconInfoType">
+		<xs:sequence>
+			<xs:element name="relatedLexiconType">
+				<xs:annotation>
+					<xs:documentation>Indicates the position of the lexica that must or can be used with the grammar</xs:documentation>
+					<xs:appinfo>
+						<label>Related lexicon type</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+						<xs:enumeration value="included">
+							<xs:annotation>
+								<xs:documentation>For lexica that are included in the grammar file</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="attached">
+							<xs:annotation>
+								<xs:documentation>for lexica attached to a resource (e.g. as a different file in the same directory, or downloadable from another position); the element attachedLexiconPosition should be used for further information</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="compatible">
+							<xs:annotation>
+								<xs:documentation>for grammars that can use any lexicon as long as they of a compatible type; the element compatibleLexiconType must be used for further specification</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="none"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="attachedLexiconPosition" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates the position of the lexicon, if attached to the grammar</xs:documentation>
+					<xs:appinfo>
+						<label>Attached lexicon position</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="500"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="compatibleLexiconType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Type of (external) lexicon that can be used with the grammar</xs:documentation>
+					<xs:appinfo>
+						<relation>one-to-many</relation>
+						<label>Compatible lexicon type</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+						<xs:enumeration value="wordnet">
+							<xs:annotation>
+								<xs:documentation>Value for compatibleLexiconType; to be used for grammars that are compatible with wordnets</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="wordlist">
+							<xs:annotation>
+								<xs:documentation>Value for compatibleLexiconType; to be used for grammars that need wordlists for their operation</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="morphologicalLexicon">
+							<xs:annotation>
+								<xs:documentation>Value for compatibleLexiconType; to be used for grammars that need lexica with morphological information for their operation</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="other"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- definition of elements -->
+	<xs:element name="languageDescriptionMetadataRecord">
+		<xs:annotation>
+			<xs:appinfo>
+				<xs:label>Metadata record for language descriptions (grammars)</xs:label>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ms:metadataHeaderInfo"/>
+				<xs:element ref="ms:languageDescriptionInfo"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="languageDescriptionInfo" type="ms:languageDescriptionInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together all information related to language descriptions</xs:documentation>
+			<xs:appinfo>
+				<label>Language description</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="languageDescriptionEncodingInfo" type="ms:languageDescriptionEncodingInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together information on the contents of the LanguageDescriptions</xs:documentation>
+			<xs:appinfo>
+				<label>Language description encoding</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="languageDescriptionOperationInfo" type="ms:languageDescriptionOperationInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together information on the operation requirements of the Language Descriptions</xs:documentation>
+			<xs:appinfo>
+				<label>Language description operation</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="languageDescriptionPerformanceInfo" type="ms:languageDescriptionPerformanceInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together information on the performance of the Language Descriptions</xs:documentation>
+			<xs:appinfo>
+				<label>Language description performance</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="languageDescriptionTextInfo" type="ms:languageDescriptionTextInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together all information relevant to the text module of a language description (e.g. format, languages, size etc.); it is obligatory for all language descriptions</xs:documentation>
+			<xs:appinfo>
+				<label>Language description text component</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>
