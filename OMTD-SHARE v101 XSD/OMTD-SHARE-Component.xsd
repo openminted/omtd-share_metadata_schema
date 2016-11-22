@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
 <!-- edited by ILSP/Athena R.C. -->
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-ResourceCommon.xsd"/>
 	<xs:complexType name="componentInfoType">
@@ -10,13 +11,18 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="resourceType" type="xs:string" fixed="component">
-				<xs:annotation>
-					<xs:documentation/>
-					<xs:appinfo>
-						<label>Resource type</label>
-					</xs:appinfo>
-				</xs:annotation>
+			<xs:element name="resourceType" fixed="component">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation/>
+						<xs:appinfo>
+							<label>Resource type</label>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="component"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:element>
 			<xs:element ref="ms:identificationInfo"/>
 			<xs:element ref="ms:contactInfo" maxOccurs="1"/>
@@ -578,6 +584,13 @@ words) in two languages</xs:documentation>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="parameterInfos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:parameterInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="inputContentResourceInfo" type="ms:processingResourceInfoType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Groups together information on the requirements set on the input resource of a component</xs:documentation>
@@ -660,12 +673,48 @@ words) in two languages</xs:documentation>
 			<xs:element ref="ms:componentDocumentationInfo" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="parameterInfoType">
+		<xs:sequence>
+			<xs:element name="parameterName" type="xs:string"/>
+			<xs:element name="descriptions" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" minOccurs="1" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Provides the description of the resource in prose; the element can be repeated for the different language versions using the "lang" attribute to specify the language.</xs:documentation>
+								<xs:appinfo>
+									<label>Description</label>
+									<exactMatch>dct:description</exactMatch>
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2520_9eeedfb4-47d3-ddee-cfcb-99ac634bf1db (ccr:descriptionContext)</closeMatch>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="10000"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang30">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="parameterType" type="xs:string"/>
+			<xs:element name="mandatory" type="xs:boolean" default="true"/>
+			<xs:element name="defaultValue" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="multiValue" type="xs:boolean" default="false"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="processingResourceInfoType">
 		<xs:sequence>
 			<xs:element name="resourceTypes">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="resourceType" minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="resourceType" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>The type of the resource that a component takes as input or produces as output</xs:documentation>
 								<xs:appinfo>
@@ -970,6 +1019,7 @@ words) in two languages</xs:documentation>
 					<xs:restriction base="xs:string">
 						<xs:enumeration value="UIMA"/>
 						<xs:enumeration value="GATE"/>
+						<xs:enumeration value="AlvisNLP"/>
 						<xs:enumeration value="other"/>
 					</xs:restriction>
 				</xs:simpleType>
@@ -1054,6 +1104,14 @@ words) in two languages</xs:documentation>
 			<xs:documentation>Groups together all information related to software components</xs:documentation>
 			<xs:appinfo>
 				<label>Component</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="parameterInfo" type="ms:parameterInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together information on each parameter of a component</xs:documentation>
+			<xs:appinfo>
+				<label>Parameter</label>
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>

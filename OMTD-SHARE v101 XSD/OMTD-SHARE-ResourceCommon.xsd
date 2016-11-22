@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
 <!-- edited by ILSP/Athena R.C. -->
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-ISOVocabularies.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-Actors.xsd"/>
@@ -574,13 +575,19 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="mustBeCitedWith" type="ms:relatedDocumentInfoType" minOccurs="0" maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>Publication to be used for citation purposes as requested by resource providers (usually a scientific article that describes the resource)</xs:documentation>
-					<xs:appinfo>
-						<label>Must be cited with</label>
-					</xs:appinfo>
-				</xs:annotation>
+			<xs:element name="citations" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="mustBeCitedWith" type="ms:relatedDocumentInfoType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Publication to be used for citation purposes as requested by resource providers (usually a scientific article that describes the resource)</xs:documentation>
+								<xs:appinfo>
+									<label>Must be cited with</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
 			</xs:element>
 			<xs:element name="documentationPublications" minOccurs="0">
 				<xs:complexType>
@@ -2604,41 +2611,6 @@
 								<xs:annotation>
 									<xs:appinfo>
 										<label>KEA corpus</label>
-									</xs:appinfo>
-								</xs:annotation>
-							</xs:enumeration>
-							<xs:enumeration value="lll">
-								<xs:annotation>
-									<xs:appinfo>
-										<label>LLL</label>
-									</xs:appinfo>
-								</xs:annotation>
-							</xs:enumeration>
-							<xs:enumeration value="lll">
-								<xs:annotation>
-									<xs:appinfo>
-										<label>LLL</label>
-									</xs:appinfo>
-								</xs:annotation>
-							</xs:enumeration>
-							<xs:enumeration value="lll">
-								<xs:annotation>
-									<xs:appinfo>
-										<label>LLL</label>
-									</xs:appinfo>
-								</xs:annotation>
-							</xs:enumeration>
-							<xs:enumeration value="lll">
-								<xs:annotation>
-									<xs:appinfo>
-										<label>LLL</label>
-									</xs:appinfo>
-								</xs:annotation>
-							</xs:enumeration>
-							<xs:enumeration value="lll">
-								<xs:annotation>
-									<xs:appinfo>
-										<label>LLL</label>
 									</xs:appinfo>
 								</xs:annotation>
 							</xs:enumeration>

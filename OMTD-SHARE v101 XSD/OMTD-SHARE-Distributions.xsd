@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
 <!-- edited by ILSP/Athena R.C. -->
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-Actors.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-TextSpecific.xsd"/>
@@ -195,6 +196,7 @@
 						<xs:enumeration value="webService"/>
 						<xs:enumeration value="sourceCode"/>
 						<xs:enumeration value="executableCode"/>
+						<xs:enumeration value="sourceAndExecutableCode"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -575,6 +577,7 @@
 						<xs:enumeration value="LGPL"/>
 						<xs:enumeration value="MIT"/>
 						<xs:enumeration value="Princeton_Wordnet"/>
+						<xs:enumeration value="EPL"/>
 						<xs:enumeration value="proprietary"/>
 						<xs:enumeration value="underNegotiation"/>
 						<xs:enumeration value="nonStandardLicenceTerms"/>
@@ -875,7 +878,7 @@
 	</xs:element>
 	<xs:element name="downloadURL" type="ms:httpURI">
 		<xs:annotation>
-			<xs:documentation>Any url where the resource can be downloaded from; please, use if the resource is "downloadable" and you have not uploaded the resource in the repository</xs:documentation>
+			<xs:documentation>Any url where the resource can be downloaded from; please, use if the resource is downloadable and you have not uploaded the resource in the repository</xs:documentation>
 			<xs:appinfo>
 				<relation>one-to-many</relation>
 				<label>Download URL</label>
