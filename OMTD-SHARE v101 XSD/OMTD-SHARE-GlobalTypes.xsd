@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by ILSP/Athena R.C. -->
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+	<xs:include schemaLocation="./OMTD-SHARE-ISOVocabularies.xsd"/>
+	<!-- definition of global simple types -->
+	<xs:simpleType name="httpURI">
+		<xs:annotation>
+			<xs:documentation>Base type to be used for url's, ftp's, secure url's</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:pattern value="http://.*"/>
+			<xs:pattern value="https://.*"/>
+			<xs:pattern value="ftp://.*"/>
+			<xs:pattern value="www.*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="emailAddress">
+		<xs:annotation>
+			<xs:documentation>Base type for validating email addresses</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+			<xs:pattern value="[^@]+@[^\.]+\..+|"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- definition of reusable simpleTypes specific to resources -->
+	<xs:simpleType name="processMode">
+		<xs:annotation>
+			<xs:documentation>Base type for all modes of processing (e.g. annotation, conversion, creation etc.)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+			<xs:enumeration value="manual">
+				<xs:annotation>
+					<xs:documentation>For processes performed only manually, without automatic means or aids</xs:documentation>
+					<xs:appinfo>
+						<label>Manual</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="automatic">
+				<xs:annotation>
+					<xs:documentation>For processes performed only with automatic means or aids</xs:documentation>
+					<xs:appinfo>
+						<label>Automatic</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="mixed">
+				<xs:annotation>
+					<xs:documentation>For processes performed in a mixed way, using manual and automatic means</xs:documentation>
+					<xs:appinfo>
+						<label>Mixed</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="interactive">
+				<xs:annotation>
+					<xs:documentation>For processes performed interactively</xs:documentation>
+					<xs:appinfo>
+						<label>Interactive</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- definition of simple types for attributes -->
+	<xs:simpleType name="classificationSchemeName">
+		<xs:annotation>
+			<xs:documentation>Base type for listing recommended/popular classification schemes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DDC">
+				<xs:annotation>
+					<xs:documentation>Dewey Decimal Classification system; https://www.oclc.org/dewey.en.html</xs:documentation>
+					<xs:appinfo>
+						<label>Dewey Decimal Classification</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UDC">
+				<xs:annotation>
+					<xs:documentation>Universal Decimal Classification system; for the Linked Data version, cf. http://udcdata.info/</xs:documentation>
+					<xs:appinfo>
+						<label>Universal Decimal Classification</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EuroVoc">
+				<xs:annotation>
+					<xs:documentation>EuroVoc, the EU's multilingual thesaurus; various downloadable versions at http://data.europa.eu/euodp/en/data/dataset/eurovoc</xs:documentation>
+					<xs:appinfo>
+						<label>EuroVoc</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LCSH">
+				<xs:annotation>
+					<xs:documentation>Library of Congress Subject Headings; cf. http://id.loc.gov/authorities/subjects.html</xs:documentation>
+					<xs:appinfo>
+						<label>Library of Congress Subject Headings</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DK-5">
+				<xs:annotation>
+					<xs:documentation>DK-5; Linked Data version at https://opensource.dbc.dk/linked-data/dk5-linked-data</xs:documentation>
+					<xs:appinfo>
+						<label>DK-5</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MeSH">
+				<xs:annotation>
+					<xs:documentation>Medical Subject Headlings; downloadable versions at https://www.nlm.nih.gov/mesh/download_mesh.html</xs:documentation>
+					<xs:appinfo>
+						<label>Medical Subject Headings</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ANC_classification">
+				<xs:annotation>
+					<xs:documentation>American National Corpus controlled vocabulary for text classification; cf. http://www.anc.org/</xs:documentation>
+					<xs:appinfo>
+						<label>American National Corpus classification system</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BNC_classification">
+				<xs:annotation>
+					<xs:documentation>British National Corpus controlled vocabulary for text classification; cf. http://www.natcorp.ox.ac.uk/docs/URG/ subsections on selection and descriptive features</xs:documentation>
+					<xs:appinfo>
+						<label>British National Corpus classification system</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NLK_classification"/>
+			<xs:enumeration value="PAROLE_topicClassification">
+				<xs:annotation>
+					<xs:documentation>Parole topic classification system; used for the consistent classification of text corpora in the LE-PAROLE project</xs:documentation>
+					<xs:appinfo>
+						<label>PAROLE topic classification system</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PAROLE_genreClassification">
+				<xs:annotation>
+					<xs:documentation>Parole genre classification system; used for the consistent classification of text corpora in the LE-PAROLE project</xs:documentation>
+					<xs:appinfo>
+						<label>PAROLE genre classification system</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="conformanceToStandardsBestPractices">
+		<xs:annotation>
+			<xs:documentation>List of standards and best practices used for annotation for formats and content specification</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+			<xs:enumeration value="AgroVoc"/>
+			<xs:enumeration value="ALVIS"/>
+			<xs:enumeration value="ARGO"/>
+			<xs:enumeration value="BML"/>
+			<xs:enumeration value="CES"/>
+			<xs:enumeration value="DKPro_Core"/>
+			<xs:enumeration value="EAGLES"/>
+			<xs:enumeration value="EDAMontology"/>
+			<xs:enumeration value="ELSST"/>
+			<xs:enumeration value="EML"/>
+			<xs:enumeration value="EMMA"/>
+			<xs:enumeration value="GATE"/>
+			<xs:enumeration value="GESIS"/>
+			<xs:enumeration value="GMX"/>
+			<xs:enumeration value="GrAF"/>
+			<xs:enumeration value="HamNoSys"/>
+			<xs:enumeration value="HASSET"/>
+			<xs:enumeration value="InkML"/>
+			<xs:enumeration value="ILSP_NLP"/>
+			<xs:enumeration value="ISO12620"/>
+			<xs:enumeration value="ISO16642"/>
+			<xs:enumeration value="ISO1987"/>
+			<xs:enumeration value="ISO26162"/>
+			<xs:enumeration value="ISO30042"/>
+			<xs:enumeration value="ISO704"/>
+			<xs:enumeration value="JATS"/>
+			<xs:enumeration value="LAF"/>
+			<xs:enumeration value="LAPPS"/>
+			<xs:enumeration value="Lemon"/>
+			<xs:enumeration value="LMF"/>
+			<xs:enumeration value="MAF"/>
+			<xs:enumeration value="MLIF"/>
+			<xs:enumeration value="MOSES"/>
+			<xs:enumeration value="MULTEXT"/>
+			<xs:enumeration value="MUMIN"/>
+			<xs:enumeration value="multimodalInteractionFramework"/>
+			<xs:enumeration value="OAXAL"/>
+			<xs:enumeration value="OLIA"/>
+			<xs:enumeration value="OWL"/>
+			<xs:enumeration value="PANACEA"/>
+			<xs:enumeration value="pennTreeBank"/>
+			<xs:enumeration value="pragueTreebank"/>
+			<xs:enumeration value="RDF"/>
+			<xs:enumeration value="SemAF"/>
+			<xs:enumeration value="SemAF_DA"/>
+			<xs:enumeration value="SemAF_NE"/>
+			<xs:enumeration value="SemAF_SRL"/>
+			<xs:enumeration value="SemAF_DS"/>
+			<xs:enumeration value="SKOS"/>
+			<xs:enumeration value="SRX"/>
+			<xs:enumeration value="SynAF"/>
+			<xs:enumeration value="TBX"/>
+			<xs:enumeration value="TMX"/>
+			<xs:enumeration value="TEI"/>
+			<xs:enumeration value="TEI_P3"/>
+			<xs:enumeration value="TEI_P4"/>
+			<xs:enumeration value="TEI_P5"/>
+			<xs:enumeration value="TimeML"/>
+			<xs:enumeration value="XCES"/>
+			<xs:enumeration value="XLIFF"/>
+			<xs:enumeration value="UD"/>
+			<xs:enumeration value="WordNet"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- definition of global complex types -->
+	<xs:complexType name="myString">
+		<xs:annotation>
+			<xs:documentation>Base type for multilingual elements</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="lang" type="xs:language"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="dateType">
+		<xs:annotation>
+			<xs:documentation>Base type to be used for dates, allowing optional day and month</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="day" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Optional day, always in two-digit format</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:totalDigits value="2"/>
+						<xs:minExclusive value="01"/>
+						<xs:maxExclusive value="31"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="month" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Optional month; to be used in two-digit format</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:minExclusive value="01"/>
+						<xs:maxExclusive value="12"/>
+						<xs:totalDigits value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="year" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>for year; to be used with four digits always</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:minExclusive value="1400"/>
+						<xs:maxExclusive value="2100"/>
+						<xs:totalDigits value="4"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="dateRangeType">
+		<xs:annotation>
+			<xs:documentation>Base type to be used for range of dates (time periods)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ms:startDate"/>
+			<xs:element ref="ms:endDate"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="dateCombinationType">
+		<xs:annotation>
+			<xs:documentation>Base type to be used for choice betwwen range of dates and exact date</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="ms:date"/>
+			<xs:element ref="ms:dateRange"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="languageType">
+		<xs:annotation>
+			<xs:documentation>The container for the language elements (i.e. identifier according to BCP47 guidelines and all the elements that produce this id)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="languageTag">
+				<xs:annotation>
+					<xs:documentation>The identifier of the language that is included in the resource or supported by the tool/service, according to the IETF BCP47 guidelines; NOTE in the XSD there is no validation as to the validity of the id, but the system validates the input metadata and the editor produces the correct id on the basis of the subelements (language, script, region and variant)</xs:documentation>
+					<xs:appinfo>
+						<label>Language</label>
+						<sameAs>dct:language</sameAs>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:sequence minOccurs="0">
+				<xs:element name="languageId" type="ms:languageIdType">
+					<xs:annotation>
+						<xs:documentation>The identifier of the language subelement according to the IETF BCP47 guidelines (i.e. ISO 639-3 codes when existing supplemented with ISO 639-3 codes for new entries)</xs:documentation>
+						<xs:appinfo>
+							<label>Language identifier</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="scriptId" type="ms:scriptIdType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The identifier of the script subelement according to the IETF BCP47 guidelines (i.e. ISO 15924 codes)</xs:documentation>
+						<xs:appinfo>
+							<label>Script identifier</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="regiontId" type="ms:regionIdType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The identifier of the region subelement according to the IETF BCP47 guidelines (i.e. ISO 3166 codes)</xs:documentation>
+						<xs:appinfo>
+							<label>Region identifier</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="variantId" type="ms:variantIdType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The identifier of the variant subelement according to the IETF BCP47 guidelines</xs:documentation>
+						<xs:appinfo>
+							<label>Variant identifier</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- definition of identifier types -->
+	<xs:complexType name="metadataIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for metadata records</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="metadataIdentifierSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="hdl"/>
+							<xs:enumeration value="purl"/>
+							<xs:enumeration value="url"/>
+							<xs:enumeration value="urn"/>
+							<xs:enumeration value="other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="resourceIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for resources (corpora, lexical/conceptual resources etc.)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="resourceIdentifierSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="doi"/>
+							<xs:enumeration value="islrn"/>
+							<xs:enumeration value="hdl"/>
+							<xs:enumeration value="ark"/>
+							<xs:enumeration value="arXiv"/>
+							<xs:enumeration value="bibcode"/>
+							<xs:enumeration value="ean13"/>
+							<xs:enumeration value="eissn"/>
+							<xs:enumeration value="isbn"/>
+							<xs:enumeration value="issn"/>
+							<xs:enumeration value="istc"/>
+							<xs:enumeration value="lissn"/>
+							<xs:enumeration value="lsid"/>
+							<xs:enumeration value="purl"/>
+							<xs:enumeration value="upc"/>
+							<xs:enumeration value="url"/>
+							<xs:enumeration value="urn"/>
+							<xs:enumeration value="fct"/>
+							<xs:enumeration value="oai"/>
+							<xs:enumeration value="pmc"/>
+							<xs:enumeration value="pmid"/>
+							<xs:enumeration value="other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="publicationIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for publications</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="publicationIdentifierSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="doi"/>
+							<xs:enumeration value="hdl"/>
+							<xs:enumeration value="ark"/>
+							<xs:enumeration value="arXiv"/>
+							<xs:enumeration value="bibcode"/>
+							<xs:enumeration value="ean13"/>
+							<xs:enumeration value="eissn"/>
+							<xs:enumeration value="isbn"/>
+							<xs:enumeration value="issn"/>
+							<xs:enumeration value="istc"/>
+							<xs:enumeration value="lissn"/>
+							<xs:enumeration value="lsid"/>
+							<xs:enumeration value="purl"/>
+							<xs:enumeration value="upc"/>
+							<xs:enumeration value="url"/>
+							<xs:enumeration value="urn"/>
+							<xs:enumeration value="fct"/>
+							<xs:enumeration value="oai"/>
+							<xs:enumeration value="pmc"/>
+							<xs:enumeration value="pmid"/>
+							<xs:enumeration value="other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="journalIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for journals</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="journalIdentifierSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="doi"/>
+							<xs:enumeration value="hdl"/>
+							<xs:enumeration value="issn"/>
+							<xs:enumeration value="other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="repositoryIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for repositories, archives etc.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="repositoryIdentifierSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="doi"/>
+							<xs:enumeration value="hdl"/>
+							<xs:enumeration value="url"/>
+							<xs:enumeration value="oai"/>
+							<xs:enumeration value="opendoar"/>
+							<xs:enumeration value="re3d"/>
+							<xs:enumeration value="roar"/>
+							<xs:enumeration value="other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="personIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for persons</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="personIdentifierSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="orcid"/>
+							<xs:enumeration value="isni"/>
+							<xs:enumeration value="researcherId"/>
+							<xs:enumeration value="scopusId"/>
+							<xs:enumeration value="other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="organizationIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for organizations</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="organizationIdentifierSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="isni"/>
+							<xs:enumeration value="fundref"/>
+							<xs:enumeration value="other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="projectIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Base type for identifier schemes for projects</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="projectIdentifierSchemeName" type="xs:string" use="required"/>
+				<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!-- definition of related entities -->
+	<xs:complexType name="actorInfoType">
+		<xs:annotation>
+			<xs:documentation>Base type for actors/agents; choice between person and organization</xs:documentation>
+			<xs:appinfo>
+				<relation>one-to-one</relation>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="relatedPerson" type="ms:relatedPersonType">
+				<xs:annotation>
+					<xs:appinfo>
+						<relation>one-to-one</relation>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="relatedOrganization" type="ms:relatedOrganizationType">
+				<xs:annotation>
+					<xs:appinfo>
+						<relation>one-to-one</relation>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="relatedPersonType">
+		<xs:annotation>
+			<xs:documentation>Base type for related persons; choice between person names and person identifiers</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="personNames">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="personName" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The name(s) of the person, preferrably in the format: surname, initials (first name) prefix</xs:documentation>
+								<xs:appinfo>
+									<label>Person name</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang230">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="personIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="personIdentifier" type="ms:personIdentifierType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<relation>one-to-one</relation>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="relatedOrganizationType">
+		<xs:annotation>
+			<xs:documentation>Base type for related organizations; choice between organization names and identifiers</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="organizationNames">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="organizationName" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The name(s) of the organization</xs:documentation>
+								<xs:appinfo>
+									<label>Organization name</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang290">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organizationIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="organizationIdentifier" type="ms:organizationIdentifierType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<relation>one-to-one</relation>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="relatedGroupType">
+		<xs:annotation>
+			<xs:documentation>Base type for related groups; group name and choice between organization names and identifiers</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="groupNames">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="groupName" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The name(s) of the group</xs:documentation>
+								<xs:appinfo>
+									<label>Group name</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang1290">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="relatedOrganization" type="ms:relatedOrganizationType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="relatedProjectType">
+		<xs:annotation>
+			<xs:documentation>Base type for related projects; choice between project names and identifiers</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="projectNames">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="projectName" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The name(s) of the project</xs:documentation>
+								<xs:appinfo>
+									<label>Project name</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang280">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="projectIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="projectIdentifier" type="ms:projectIdentifierType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<relation>one-to-one</relation>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="relatedJournalType">
+		<xs:annotation>
+			<xs:documentation>Base type for related journals; choice between journal titles and identifiers</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="journalTitles">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="journalTitle" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The title(s) of the journal</xs:documentation>
+								<xs:appinfo>
+									<label>Journal title</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang900">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="journalIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="journalIdentifier" type="ms:journalIdentifierType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<relation>one-to-one</relation>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="relatedRepositoryType">
+		<xs:annotation>
+			<xs:documentation>Base type for related repositories; choice between repository names and identifiers</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="repositoryNames">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="repositoryName" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The name(s) of the repository</xs:documentation>
+								<xs:appinfo>
+									<label>Repository name</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang700">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="repositoryIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="repositoryIdentifier" type="ms:repositoryIdentifierType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<relation>one-to-one</relation>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="relatedResourceType">
+		<xs:annotation>
+			<xs:documentation>Base type for related resources; choice between resource names and identifiers</xs:documentation>
+			<xs:appinfo>
+				<xs:label>Type for related resources</xs:label>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="resourceIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="resourceIdentifier" type="ms:resourceIdentifierType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<relation>one-to-one</relation>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="resourceNames">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="resourceName" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The name of the resource</xs:documentation>
+								<xs:appinfo>
+									<label>Resource name</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang890">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="relatedDocumentInfoType">
+		<xs:choice>
+			<xs:element name="documentUnstructured">
+				<xs:annotation>
+					<xs:documentation>Used either as a free text description or as an unstructured (free form) presentation of a bibliographic record; alternative to the structured presentation of a document (cf. documentInfo)</xs:documentation>
+					<xs:appinfo>
+						<label>Unstructured document</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="500"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="publicationIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="publicationIdentifier" type="ms:publicationIdentifierType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<!-- definition of metadata header -->
+	<xs:complexType name="metadataHeaderInfoType">
+		<xs:annotation>
+			<xs:documentation>Base type for metadata header</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="metadataRecordIdentifier" type="ms:metadataIdentifierType">
+				<xs:annotation>
+					<xs:documentation>A persistent identifier for the metadata record itself</xs:documentation>
+					<xs:appinfo>
+						<label>Metadata link</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="metadataCreationDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>The date of creation of this metadata description (automatically inserted by the software)</xs:documentation>
+					<xs:appinfo>
+						<label>Metadata creation date</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="metadataCreators" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="metadataCreator" type="ms:relatedPersonType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Groups information on the person that has created the metadata record (for records manually edited)</xs:documentation>
+								<xs:appinfo>
+									<relation>many-to-many</relation>
+									<label>Metadata creator</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="sourceOfMetadataRecord" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Refers to the catalog or repository from which the metadata record has been originated (for harvested records)</xs:documentation>
+					<xs:appinfo>
+						<label>Source of metadata record</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="collectedFrom" type="ms:relatedRepositoryType">
+							<xs:annotation>
+								<xs:documentation>Refers to the entity (repository, aggregator etc.) from which the metadata record has been harvested</xs:documentation>
+								<xs:appinfo>
+									<label>Source repository</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="sourceMetadataLink" type="ms:httpURI">
+							<xs:annotation>
+								<xs:documentation>A link to the original metadata record, in cases of harvesting</xs:documentation>
+								<xs:appinfo>
+									<label>Original metadata record link</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="relatedMetadataScheme" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Refers to the metadata schema originally used for the description of the resource</xs:documentation>
+								<xs:appinfo>
+									<label>Original metadata scheme</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="500"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="originalDataProviderInfo" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Refers to the original data provider, in case the metadata record carries information taken from previous repositories/journals/publishers (e.g. in case the record's last source is an aggregator)</xs:documentation>
+								<xs:appinfo>
+									<label>Original data provider</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="originalDataProviderType" minOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Refers to the type of the original data provider (repository/journal/publisher/aggregator etc.)</xs:documentation>
+											<xs:appinfo>
+												<label>Original data provider type</label>
+											</xs:appinfo>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="repository"/>
+												<xs:enumeration value="journal"/>
+												<xs:enumeration value="publisher"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:choice>
+										<xs:element name="originalDataProviderRepository" type="ms:relatedRepositoryType">
+											<xs:annotation>
+												<xs:documentation>Information about the repository that has originally provided the metadata record</xs:documentation>
+												<xs:appinfo>
+													<label>Original data provider (repository)</label>
+												</xs:appinfo>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="originalDataProviderJournal" type="ms:relatedJournalType">
+											<xs:annotation>
+												<xs:documentation>Information about the journal that has originally provided the metadata record</xs:documentation>
+												<xs:appinfo>
+													<label>Original data provider (journal)</label>
+												</xs:appinfo>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="originalDataProviderPublisher" type="ms:relatedOrganizationType">
+											<xs:annotation>
+												<xs:documentation>Information about the publisher (organization) that has originally provided the metadata record</xs:documentation>
+												<xs:appinfo>
+													<label>Original data provider (publisher)</label>
+												</xs:appinfo>
+											</xs:annotation>
+										</xs:element>
+									</xs:choice>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="metadataLanguages" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="metadataLanguage" type="ms:languageType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The language in which the metadata description is written according to IETF BCP47 (ISO 639-1 or ISO 639-3 for languages not covered by the first standard)</xs:documentation>
+								<xs:appinfo>
+									<label>Metadata language</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="metadataLastDateUpdated" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>The date of the last updating of the metadata record (automatically inserted by the system)</xs:documentation>
+					<xs:appinfo>
+						<label>Metadata last date updated</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="revision" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Provides an account of the revisions in free text or a link to a document with revisions</xs:documentation>
+					<xs:appinfo>
+						<label>Revision</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="500"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- definition of re-usable elements -->
+	<xs:element name="date" type="ms:dateType">
+		<xs:annotation>
+			<xs:documentation>Basic format for dates, with optional day and month and obligatory year</xs:documentation>
+			<xs:appinfo>
+				<label>Date</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="endDate" type="ms:dateType">
+		<xs:annotation>
+			<xs:documentation>Basic format for end dates, with optional day and month and obligatory year</xs:documentation>
+			<xs:appinfo>
+				<label>End date</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="startDate" type="ms:dateType">
+		<xs:annotation>
+			<xs:documentation>Basic format for start dates, with optional day and month and obligatory year</xs:documentation>
+			<xs:appinfo>
+				<label>Start date</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="dateRange" type="ms:dateRangeType">
+		<xs:annotation>
+			<xs:documentation>Basic format for date ranges, allowing combinations of years and full dates</xs:documentation>
+			<xs:appinfo>
+				<label>Date range</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="subject">
+		<xs:annotation>
+			<xs:documentation>For resources that are using subject / topic classification</xs:documentation>
+			<xs:appinfo>
+				<label>Subject</label>
+				<closeMatch>Topic</closeMatch>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="classificationSchemeName" type="ms:classificationSchemeName" use="required"/>
+					<xs:attribute name="schemeURI" type="xs:anyURI" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="metadataHeaderInfo" type="ms:metadataHeaderInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups information on the metadata record itself</xs:documentation>
+			<xs:appinfo>
+				<label>Metadata header</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

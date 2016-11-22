@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by ILSP/Athena R.C. -->
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
+	<xs:include schemaLocation="./OMTD-SHARE-ResourceCommon.xsd"/>
+	<xs:complexType name="modelInfoType">
+		<xs:annotation>
+			<xs:appinfo>
+				<render-short>{identificationInfo/resourceName}</render-short>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="resourceType" type="xs:string" fixed="model">
+				<xs:annotation>
+					<xs:documentation/>
+					<xs:appinfo>
+						<label>Resource type</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ms:identificationInfo"/>
+			<xs:element ref="ms:contactInfo" maxOccurs="1"/>
+			<xs:element ref="ms:versionInfo" minOccurs="0"/>
+			<xs:element name="validationInfos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:validationInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="ms:usageInfo" minOccurs="0"/>
+			<xs:element ref="ms:resourceDocumentationInfo" minOccurs="0"/>
+			<xs:element ref="ms:resourceCreationInfo" minOccurs="0"/>
+			<xs:element name="distributionInfos">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:datasetDistributionInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="modelOperationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="variantName" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>variant name used for the model</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Variant name</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="ms:tagset" minOccurs="0"/>
+						<xs:element ref="ms:typesystem" minOccurs="0"/>
+						<xs:element name="algorithm" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Training algorithm used for the model (e.g. maximum entropy, svm etc.)</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Algorithm</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="algorithmDetails" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Detailed description of the algorithm, incl. info on whether it's supervised or not</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Algorithm details</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="trainingCorpusDetails" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Detailed description of the training corpus (e.g. size, number of features etc.)</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Training corpus details</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="modelMediaType">
+				<xs:annotation>
+					<xs:documentation>Restriction of mediaType for models</xs:documentation>
+					<xs:appinfo>
+						<relation>one-to-one</relation>
+						<label>Media type component of model</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:modelTextInfo" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modelTextInfoType">
+		<xs:sequence>
+			<xs:element name="mediaType" type="xs:string" fixed="text">
+				<xs:annotation>
+					<xs:documentation>Specifies the media type of the resource and basically corresponds to the physical medium of the content representation. Each media type is described through a distinctive set of features. A resource may consist of parts attributed to different types of media. A component may take as input/output more than one different media types.</xs:documentation>
+					<xs:appinfo>
+						<label>Media type</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ms:lingualityInfo"/>
+			<xs:element name="languages">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:languageInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="modalities" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:modalityInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="sizes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:sizeInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="domains" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:domainInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="timeClassifications" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:timeCoverageInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="geographicClassifications" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:geographicCoverageInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="ms:creationInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- definition of elements -->
+	<xs:element name="modelMetadataRecord">
+		<xs:annotation>
+			<xs:appinfo>
+				<xs:label>Metadata record for models</xs:label>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ms:metadataHeaderInfo"/>
+				<xs:element ref="ms:modelInfo"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="modelInfo" type="ms:modelInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together all information related to models</xs:documentation>
+			<xs:appinfo>
+				<label>Model</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="modelTextInfo" type="ms:modelTextInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together all information related to the textual part of models</xs:documentation>
+			<xs:appinfo>
+				<label>Model</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

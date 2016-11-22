@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by ILSP/Athena R.C. -->
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
+	<xs:include schemaLocation="./OMTD-SHARE-Distributions.xsd"/>
+	<xs:complexType name="documentMetadataRecordType">
+		<xs:annotation>
+			<xs:documentation>Base type for metadata records of single files (documents)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ms:metadataHeaderInfo"/>
+			<xs:element name="document">
+				<xs:annotation>
+					<xs:documentation>Root element for documents (single files); choice among raw publications and annotated publications</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element ref="ms:publication"/>
+						<xs:element ref="ms:annotatedPublication"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documentInfoType">
+		<xs:annotation>
+			<xs:documentation>Base type for documents (single files) mainly intended for publications</xs:documentation>
+			<xs:appinfo>
+				<render-short>{publicationIdentifier}, {author}: {title}</render-short>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="documentType">
+				<xs:annotation>
+					<xs:documentation>Specifies whether the record includes direct access to the full text, the abstract in txt format (inside the record) or serves only as a bibliographic record (includes only metadata)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="bibliographicRecordOnly"/>
+						<xs:enumeration value="abstract"/>
+						<xs:enumeration value="fullText"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="publicationType">
+				<xs:annotation>
+					<xs:documentation>Specifies the type of the publication</xs:documentation>
+					<xs:appinfo>
+						<label>Publication type</label>
+						<sameAs>dct:type</sameAs>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+						<xs:enumeration value="article">
+							<xs:annotation>
+								<xs:documentation>An article from a journal or magazine</xs:documentation>
+								<xs:appinfo>
+									<label>Article</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="bachelorThesis">
+							<xs:annotation>
+								<xs:documentation>Bachelor thesis</xs:documentation>
+								<xs:appinfo>
+									<label>Bachelor thesis</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="masterThesis">
+							<xs:annotation>
+								<xs:documentation>Master's thesis</xs:documentation>
+								<xs:appinfo>
+									<label>Master's thesis</label>
+									<sameAs>ms:mastersThesis</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="doctoralThesis">
+							<xs:annotation>
+								<xs:documentation>A doctoral (PhD) thesis</xs:documentation>
+								<xs:appinfo>
+									<label>Doctoral thesis</label>
+									<sameAs>ms:phDThesis</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="book">
+							<xs:annotation>
+								<xs:documentation>A book with an explicit publisher</xs:documentation>
+								<xs:appinfo>
+									<label>Book</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="bookPart">
+							<xs:annotation>
+								<xs:documentation>Part of a book</xs:documentation>
+								<xs:appinfo>
+									<label>Book part</label>
+									<sameAs>ms:inBook</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="review">
+							<xs:annotation>
+								<xs:documentation>Review of a book published in a journal</xs:documentation>
+								<xs:appinfo>
+									<label>Review</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="conferenceObject">
+							<xs:annotation>
+								<xs:documentation>The proceedings of a conference</xs:documentation>
+								<xs:appinfo>
+									<label>Conference object</label>
+									<sameAs>ms:proceedings</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="lecture">
+							<xs:annotation>
+								<xs:documentation>Lecture from a university</xs:documentation>
+								<xs:appinfo>
+									<label>Lecture</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="workingPaper">
+							<xs:annotation>
+								<xs:documentation>Working paper</xs:documentation>
+								<xs:appinfo>
+									<label>Working paper</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="prePrint">
+							<xs:annotation>
+								<xs:documentation>Pre-print version of an article</xs:documentation>
+								<xs:appinfo>
+									<label>Pre-print</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="report">
+							<xs:annotation>
+								<xs:documentation>Report (e.g. deliverable)</xs:documentation>
+								<xs:appinfo>
+									<label>Report</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="annotation">
+							<xs:annotation>
+								<xs:documentation>Annotated version</xs:documentation>
+								<xs:appinfo>
+									<label>Annotation</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="contributionToPeriodical">
+							<xs:annotation>
+								<xs:documentation>contributionToPeriodical</xs:documentation>
+								<xs:appinfo>
+									<label>Contribution To Periodical</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="patent">
+							<xs:annotation>
+								<xs:documentation>Patent</xs:documentation>
+								<xs:appinfo>
+									<label>Patent</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="inProceedings">
+							<xs:annotation>
+								<xs:documentation>An article in a conference proceedings</xs:documentation>
+								<xs:appinfo>
+									<label>In proceedings</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="booklet">
+							<xs:annotation>
+								<xs:documentation>A work that is printed and bound, but without a named  publisher or sponsoring institution</xs:documentation>
+								<xs:appinfo>
+									<label>Booklet</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="manual">
+							<xs:annotation>
+								<xs:documentation>Technical documentation</xs:documentation>
+								<xs:appinfo>
+									<label>Manual</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="techReport">
+							<xs:annotation>
+								<xs:documentation>A report published by a school or other institution</xs:documentation>
+								<xs:appinfo>
+									<label>Technical report</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="inCollection">
+							<xs:annotation>
+								<xs:documentation>A part of a book having its own title</xs:documentation>
+								<xs:appinfo>
+									<label>In collection</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="unpublished">
+							<xs:annotation>
+								<xs:documentation>A document having an author and title, but not formally published</xs:documentation>
+								<xs:appinfo>
+									<label>Unpublished</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="other">
+							<xs:annotation>
+								<xs:documentation>Use this type when nothing else fits</xs:documentation>
+								<xs:appinfo>
+									<label>Other</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="identifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="publicationIdentifier" type="ms:publicationIdentifierType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
+								<xs:appinfo>
+									<label>Publication identifier</label>
+									<sameAs>dct:identifier</sameAs>
+									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+									<!-- currently DataCite only supports DOI's -->
+									<narrowMatch>dataCite:identifier</narrowMatch>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="titles">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="title" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The title of the publication</xs:documentation>
+								<xs:appinfo>
+									<label>Title</label>
+									<sameAs>dct:title</sameAs>
+									<sameAs>datacite:title</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ms:myString">
+										<xs:attribute name="titleType" use="optional">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="alternativeTitle"/>
+													<xs:enumeration value="subtitle"/>
+													<xs:enumeration value="translatedTitle"/>
+													<xs:enumeration value="other"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang10">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="authors" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="author" type="ms:relatedPersonType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The name(s) of the author(s), preferrably in the format: surname, initials (first name) prefix with optional identifier for persons</xs:documentation>
+								<xs:appinfo>
+									<label>Author</label>
+									<sameAs>dct:creator</sameAs>
+									<sameAs>dataCite:creator</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="contributors" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="contributor" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The identifier of the contributor, preferrably in the format: surname, initials (first name) prefix or the unique identifier of the author</xs:documentation>
+								<xs:appinfo>
+									<label>Contributor</label>
+									<sameAs>dct:contributor</sameAs>
+									<sameAs>datacite:contributor</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:choice>
+								<xs:element name="relatedPerson">
+								<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ms:relatedPersonType">
+										<xs:attribute name="contributorType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="editor"/>
+													<xs:enumeration value="translator"/>
+													<xs:enumeration value="other"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+								</xs:complexType>
+</xs:element>
+								<xs:element name="relatedOrganization">
+								<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ms:relatedOrganizationType">
+										<xs:attribute name="contributorType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="editor"/>
+													<xs:enumeration value="translator"/>
+													<xs:enumeration value="other"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+								</xs:complexType>
+</xs:element>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="publicationDate" type="ms:dateType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The publication date or, for an unpublished work, the date it was written</xs:documentation>
+					<xs:appinfo>
+						<label>Publication date</label>
+						<sameAs>dct:created</sameAs>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ms:publisher" minOccurs="0"/>
+			<xs:element ref="ms:journal" minOccurs="0"/>
+			<xs:element name="inBook" type="ms:relatedDocumentInfoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The title or identifier of a book in which a publication appears (e.g. as a chapter, as article in a collection of articles, conference proceedings etc.)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="volume" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the volume of a journal or multivolume book</xs:documentation>
+					<xs:appinfo>
+						<label>Volume</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="series" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of a series or set of books. When citing an entire book, the title field gives its title and an optional series field gives the name of a series or multi-volume set in which the book is published</xs:documentation>
+					<xs:appinfo>
+						<label>Series</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="pages" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>One or more page numbers or range of page numbers</xs:documentation>
+					<xs:appinfo>
+						<label>Pages</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="edition" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The edition of a book</xs:documentation>
+					<xs:appinfo>
+						<label>Edition</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="conference" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the conference in which the document has been presented</xs:documentation>
+					<xs:appinfo>
+						<label>Conference</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="300"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="distributions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:documentDistributionInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="documentLanguages" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="documentLanguage" type="ms:languageType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The language the document is written in (according to the IETF BCP47 guidelines)</xs:documentation>
+								<xs:appinfo>
+									<label>Language of the document</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="subjects" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:subject" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Subject or topic of the document</xs:documentation>
+								<xs:appinfo>
+									<label>Subject / topic</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="keywords" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:keyword" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Words used for indexing of the document</xs:documentation>
+								<xs:appinfo>
+									<label>Keyword</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="fundingProjects" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="fundingProject" type="ms:relatedProjectType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The project that has been responsible for the creation of the publication</xs:documentation>
+								<xs:appinfo>
+									<label>Funding project</label>
+									<broadMatch>dct:relation</broadMatch>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="abstracts" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="abstract" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The abstract of the document in plain text format; the element can be repeated for the different language versions using the "lang" attribute to specify the language.</xs:documentation>
+								<xs:appinfo>
+									<label>Abstract</label>
+									<sameAs>dct:description</sameAs>
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2520_9eeedfb4-47d3-ddee-cfcb-99ac634bf1db (ccr:descriptionContext)</closeMatch>
+									<closeMatch>datacite:description descriptionType="Abstract"</closeMatch>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="10000"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang159">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="sizes" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="sizeInfo" type="ms:sizeInfoType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Size of the publication (e.g. number of words, pages etc.)</xs:documentation>
+								<xs:appinfo>
+									<label>Size</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="journalInfoType">
+		<xs:annotation>
+			<xs:documentation>Base type for journals</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="journalIdentifier" type="ms:journalIdentifierType" minOccurs="1" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
+								<xs:appinfo>
+									<label>Journal Identifier</label>
+									<sameAs>dct:identifier</sameAs>
+									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+									<!-- currently DataCite only supports DOI's -->
+									<sameAs>dataCite:identifier</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="journalTitles">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="journalTitle" minOccurs="1" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The full name of the journal; the element can be repeated for the different language versions using the "lang" attribute to specify the language.</xs:documentation>
+								<xs:appinfo>
+									<label>Journal name</label>
+									<sameAs>dct:title</sameAs>
+									<sameAs>http://hdl.handle.net/11459/CCR_C-2545_d873f2ab-2a2f-29d6-a9ab-260cde57f227 (ccr:resourceTitle)</sameAs>
+									<sameAs>datacite:title</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang222">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="ms:publisher" minOccurs="0"/>
+			<xs:element name="languages" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="journalLanguage" type="ms:languageType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="subjects" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:subject" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="rights" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:rightsInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="annotatedDocumentInfoType">
+		<xs:annotation>
+			<xs:documentation>Base type for annotated documents (single files); combination of raw publication (with link to it) and the annotated file</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rawPublication" type="ms:relatedDocumentInfoType"/>
+			<xs:element ref="ms:annotationInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- definition of elements -->
+	<xs:element name="documentMetadataRecord" type="ms:documentMetadataRecordType">
+		<xs:annotation>
+			<xs:documentation>Root element for metadata records of single files (documents); groups metadata header and information about the document itself</xs:documentation>
+			<xs:appinfo>
+				<label>Document metadata record</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="publication" type="ms:documentInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups information on a document in a structured format; it can be used both for published or unpublished documents</xs:documentation>
+			<xs:appinfo>
+				<label>Document</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="annotatedPublication" type="ms:annotatedDocumentInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups information on annotated documents (publications), with a link to the record of the raw publication and information about the annotation</xs:documentation>
+			<xs:appinfo>
+				<label>Document</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="publisher" type="ms:actorInfoType">
+		<xs:annotation>
+			<xs:documentation>Information about the publisher</xs:documentation>
+			<xs:appinfo>
+				<label>Publisher</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="journal" type="ms:relatedJournalType">
+		<xs:annotation>
+			<xs:documentation>Information about the journal where the publication has appeared</xs:documentation>
+			<xs:appinfo>
+				<label>Journal</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="repository" type="ms:relatedRepositoryType">
+		<xs:annotation>
+			<xs:documentation>Information about the repository where the publication is deposited</xs:documentation>
+			<xs:appinfo>
+				<label>Repository</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

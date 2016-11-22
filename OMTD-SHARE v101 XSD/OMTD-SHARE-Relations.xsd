@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by ILSP/Athena R.C. -->
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0" xml:lang="en">
+	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
+	<xs:complexType name="relationInfoType">
+		<xs:sequence>
+			<xs:element name="relationType">
+				<xs:annotation>
+					<xs:documentation>Specifies the type of relation holding between two entities (e.g. two resources that comprise one new resource together, a corpus and the s/w component that has been used for its creation or a corpus and the publication that describes it</xs:documentation>
+					<xs:appinfo>
+						<label>Relation type</label>
+						<exactMatch>dataCite relation relationType</exactMatch>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="isPartOf"/>
+						<xs:enumeration value="isPartWith"/>
+						<xs:enumeration value="hasPart"/>
+						<xs:enumeration value="hasOutcome"/>
+						<xs:enumeration value="isCombinedWith"/>
+						<xs:enumeration value="requiresLR"/>
+						<xs:enumeration value="requiresSoftware"/>
+						<xs:enumeration value="isexactMatch"/>
+						<xs:enumeration value="isSimilarTo"/>
+						<xs:enumeration value="isContinuationOf"/>
+						<xs:enumeration value="isVersionOf"/>
+						<xs:enumeration value="isSimilarTo"/>
+						<xs:enumeration value="replaces"/>
+						<xs:enumeration value="isReplacedWith"/>
+						<xs:enumeration value="isCreatedBy"/>
+						<xs:enumeration value="isElicitedBy"/>
+						<xs:enumeration value="isRecordedBy"/>
+						<xs:enumeration value="isEditedBy"/>
+						<xs:enumeration value="isAnalysedBy"/>
+						<xs:enumeration value="isEvaluatedBy"/>
+						<xs:enumeration value="isQueriedBy"/>
+						<xs:enumeration value="isAccessedBy"/>
+						<xs:enumeration value="isArchivedBy"/>
+						<xs:enumeration value="isDisplayedBy"/>
+						<xs:enumeration value="isCompatibleWith"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="relatedResource1" type="ms:relatedResourceType">
+				<xs:annotation>
+					<xs:documentation>Reference to a resource participating in a relation; the preferred form of reference is a unique identifier, otherwise the resource name</xs:documentation>
+					<xs:appinfo>
+						<label>Related resource</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="relatedResources">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="relatedResource2" type="ms:relatedResourceType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Reference to a resource participating in a relation; the preferred form of reference is a unique identifier, otherwise the resource name</xs:documentation>
+								<xs:appinfo>
+									<label>Related resource</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- definition of elements -->
+	<xs:element name="relationInfo" type="ms:relationInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together information on relations between resources</xs:documentation>
+			<xs:appinfo>
+				<label>Annotations</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>
