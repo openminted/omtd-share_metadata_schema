@@ -1030,6 +1030,14 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="userQuery" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The query text that has created the corpus of scholarly publications</xs:documentation>
+					<xs:appinfo>
+						<label>User query</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="metadataLanguages" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
