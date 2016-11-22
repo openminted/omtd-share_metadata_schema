@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OpenMinTeD-SHARE metadata schema v1.0.0</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        function getRoot(root) {
+
+        }
+    </script>
+</head>
+<body>
+<style type="text/css">
+    .table td {
+        padding: 10px;
+        min-width: 30%;
+        max-width: 30%;
+    }
+</style>
+<div style="width: 70%;margin: 0 auto;">
+    <h2>OpenMinTeD-SHARE metadata schema v1.0.0</h2>
+    <h3>Basic Entities</h3>
+    <table class="table">
+        <tr>
+            <th>Resource type</th>
+            <th>Basic xsd</th>
+            <th>Root element</th>
+        </tr>
+        <tr>
+            <td><a href="components">Components</a></td>
+            <td>OMTD-SHARE-Component.xsd</td>
+            <td>componentMetadataRecord</td>
+        </tr>
+        <tr>
+            <td><a href="corpora">Corpora</a></td>
+            <td>OMTD-SHARE-Corpus.xsd</td>
+            <td>corpusMetadataRecord</td>
+        </tr>
+        <tr>
+            <td><a href="lcr">Lexical/Conceptual resources</a> (includes lexica, ontologies, terminologies but
+                also tagsets, typesystems)
+            </td>
+            <td>OMTD-SHARE-LexicalConceptualResource.xsd</td>
+            <td>lcrMetadataRecord</td>
+        </tr>
+        <tr>
+            <td><a href="ld">Language descriptions</a> (if only grammars, we might rename it)</td>
+            <td>OMTD-SHARE-LanguageDescription.xsd</td>
+            <td>languageDescriptionMetadataRecord</td>
+        </tr>
+        <tr>
+            <td><a href="models">Models</a></td>
+            <td>OMTD-SHARE-Model.xsd</td>
+            <td>modelMetadataRecord</td>
+        </tr>
+        <tr>
+            <td><a href="publications">Publications</a></td>
+            <td>OMTD-SHARE-Publication.xsd</td>
+            <td>documentMetadataRecord</td>
+        </tr>
+        <tr>
+            <td><a href="relations">Relations between resource types</a></td>
+            <td>OMTD-SHARE-Relations.xsd</td>
+            <td>relationInfo</td>
+        </tr>
+    </table>
+    <h3>Satellite Entities</h3>
+    <table class="table">
+        <tr>
+            <th>Entity type</th>
+            <th>Basic xsd</th>
+            <th>Root element</th>
+        </tr>
+        <tr>
+            <td><a href="actors?root=personInfo">Persons</a></td>
+            <td>OMTD-SHARE-Actors.xsd</td>
+            <td>personInfo</td>
+        </tr>
+        <tr>
+            <td><a href="actors?root=organizationInfo">Organizations</a></td>
+            <td>OMTD-SHARE-Actors.xsd</td>
+            <td>organizationInfo</td>
+        </tr>
+        <tr>
+            <td><a href="projects">Projects</a></td>
+            <td>OMTD-SHARE-Projects.xsd</td>
+            <td>projectInfo</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

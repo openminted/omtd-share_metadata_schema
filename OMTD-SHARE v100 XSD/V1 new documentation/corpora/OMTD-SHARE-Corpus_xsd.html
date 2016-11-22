@@ -1,0 +1,2741 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for OMTD-SHARE-Corpus.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_OMTD-SHARE-Corpus.xsd', 
+				'properties_corpusInfoType_resourceType', 
+				'properties_corpusInfoType_validationInfos', 
+				'properties_corpusInfoType_distributionInfos', 
+				'properties_corpusInfoType_corpusSubtypeSpecificInfo', 
+				'properties_rawCorpusInfo', 
+				'properties_rawCorpusInfoType_corpusSubtype', 
+				'properties_rawCorpusInfoType_corpusMediaPartsType', 
+				'properties_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts', 
+				'properties_corpusTextPartInfo', 
+				'properties_corpusTextPartInfoType_mediaType', 
+				'properties_corpusTextPartInfoType_languages', 
+				'properties_corpusTextPartInfoType_modalities', 
+				'properties_corpusTextPartInfoType_sizes', 
+				'properties_corpusTextPartInfoType_textFormats', 
+				'properties_corpusTextPartInfoType_characterEncodings', 
+				'properties_corpusTextPartInfoType_domains', 
+				'properties_corpusTextPartInfoType_textClassifications', 
+				'properties_corpusTextPartInfoType_timeClassifications', 
+				'properties_corpusTextPartInfoType_geographicClassifications', 
+				'properties_annotatedCorpusInfo', 
+				'properties_annotatedCorpusInfoType_corpusSubtype', 
+				'properties_annotatedCorpusInfoType_corpusMediaParts', 
+				'properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts', 
+				'properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations', 
+				'properties_annotationsInfo', 
+				'properties_annotationsInfoType_corpusSubtype', 
+				'properties_annotationsInfoType_rawCorpus', 
+				'properties_corpusMetadataRecord', 
+				'properties_corpusInfo');
+var instanceBoxes= new Array('instance_corpusInfoType_validationInfos', 
+				'instance_corpusInfoType_distributionInfos', 
+				'instance_corpusInfoType_corpusSubtypeSpecificInfo', 
+				'instance_rawCorpusInfo', 
+				'instance_rawCorpusInfoType_corpusMediaPartsType', 
+				'instance_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts', 
+				'instance_corpusTextPartInfo', 
+				'instance_corpusTextPartInfoType_languages', 
+				'instance_corpusTextPartInfoType_modalities', 
+				'instance_corpusTextPartInfoType_sizes', 
+				'instance_corpusTextPartInfoType_textFormats', 
+				'instance_corpusTextPartInfoType_characterEncodings', 
+				'instance_corpusTextPartInfoType_domains', 
+				'instance_corpusTextPartInfoType_textClassifications', 
+				'instance_corpusTextPartInfoType_timeClassifications', 
+				'instance_corpusTextPartInfoType_geographicClassifications', 
+				'instance_annotatedCorpusInfo', 
+				'instance_annotatedCorpusInfoType_corpusMediaParts', 
+				'instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts', 
+				'instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations', 
+				'instance_annotationsInfo', 
+				'instance_annotationsInfoType_rawCorpus', 
+				'instance_corpusMetadataRecord', 
+				'instance_corpusInfo');
+var diagramBoxes= new Array('diagram_corpusInfoType_resourceType', 
+				'diagram_corpusInfoType_validationInfos', 
+				'diagram_corpusInfoType_distributionInfos', 
+				'diagram_corpusInfoType_corpusSubtypeSpecificInfo', 
+				'diagram_rawCorpusInfo', 
+				'diagram_rawCorpusInfoType_corpusSubtype', 
+				'diagram_rawCorpusInfoType_corpusMediaPartsType', 
+				'diagram_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts', 
+				'diagram_corpusTextPartInfo', 
+				'diagram_corpusTextPartInfoType_mediaType', 
+				'diagram_corpusTextPartInfoType_languages', 
+				'diagram_corpusTextPartInfoType_modalities', 
+				'diagram_corpusTextPartInfoType_sizes', 
+				'diagram_corpusTextPartInfoType_textFormats', 
+				'diagram_corpusTextPartInfoType_characterEncodings', 
+				'diagram_corpusTextPartInfoType_domains', 
+				'diagram_corpusTextPartInfoType_textClassifications', 
+				'diagram_corpusTextPartInfoType_timeClassifications', 
+				'diagram_corpusTextPartInfoType_geographicClassifications', 
+				'diagram_annotatedCorpusInfo', 
+				'diagram_annotatedCorpusInfoType_corpusSubtype', 
+				'diagram_annotatedCorpusInfoType_corpusMediaParts', 
+				'diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts', 
+				'diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations', 
+				'diagram_annotationsInfo', 
+				'diagram_annotationsInfoType_corpusSubtype', 
+				'diagram_annotationsInfoType_rawCorpus', 
+				'diagram_corpusMetadataRecord', 
+				'diagram_corpusInfo', 
+				'diagram_corpusInfoType', 
+				'diagram_rawCorpusInfoType', 
+				'diagram_corpusTextPartInfoType', 
+				'diagram_annotatedCorpusInfoType', 
+				'diagram_annotationsInfoType');
+var annotationBoxes= new Array('annotations_corpusInfoType_resourceType', 
+				'annotations_rawCorpusInfo', 
+				'annotations_rawCorpusInfoType_corpusMediaPartsType', 
+				'annotations_corpusTextPartInfo', 
+				'annotations_corpusTextPartInfoType_mediaType', 
+				'annotations_annotatedCorpusInfo', 
+				'annotations_annotatedCorpusInfoType_corpusMediaParts', 
+				'annotations_annotationsInfo', 
+				'annotations_corpusInfo', 
+				'annotations_rawCorpusInfoType', 
+				'annotations_annotatedCorpusInfoType');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, instanceBoxes);" class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="OMTD-SHARE-Corpus.xsd"></a><div class="componentTitle">Main schema <span class="qname">OMTD-SHARE-Corpus.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_OMTD-SHARE-Corpus.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_OMTD-SHARE-Corpus.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_OMTD-SHARE-Corpus.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">version</td>
+                                    <td><b>1.0.0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusInfoType_resourceType"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusInfoType</a></b> / ms:resourceType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_corpusInfoType_resourceType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_corpusInfoType_resourceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_corpusInfoType_resourceType" style="display:block">
+                              <div class="annotation"></div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusInfoType_resourceType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusInfoType_resourceType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusInfoType_resourceType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_resourceType.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusInfoType_resourceType" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusInfoType_resourceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusInfoType_resourceType" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">fixed</td>
+                                    <td><b>corpus</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusInfoType_validationInfos"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusInfoType</a></b> / ms:validationInfos</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusInfoType_validationInfos" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusInfoType_validationInfos');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusInfoType_validationInfos" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_validationInfos.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_validationInfos" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_validationInfos" id="OMTD-SHARE-Corpus_xsd_Element_ms_validationInfos">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#validationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#validationInfo" coords="219,6,330,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusInfoType_validationInfos" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusInfoType_validationInfos');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusInfoType_validationInfos" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusInfoType_validationInfos" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusInfoType_validationInfos');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusInfoType_validationInfos" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:validationInfos</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:validationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:validationInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:validationInfos&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusInfoType_distributionInfos"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusInfoType</a></b> / ms:distributionInfos</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusInfoType_distributionInfos" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusInfoType_distributionInfos');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusInfoType_distributionInfos" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_distributionInfos.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_distributionInfos" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_distributionInfos" id="OMTD-SHARE-Corpus_xsd_Element_ms_distributionInfos">
+                                 <area alt="OMTD-SHARE-Distributions_xsd.tmp#datasetDistributionInfo" href="OMTD-SHARE-Distributions_xsd.html#datasetDistributionInfo" coords="226,6,381,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusInfoType_distributionInfos" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusInfoType_distributionInfos');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusInfoType_distributionInfos" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusInfoType_distributionInfos" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusInfoType_distributionInfos');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusInfoType_distributionInfos" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:distributionInfos</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:datasetDistributionInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/ms:datasetDistributionInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:distributionInfos&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusInfoType_corpusSubtypeSpecificInfo"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusInfoType</a></b> / ms:corpusSubtypeSpecificInfo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusInfoType_corpusSubtypeSpecificInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusInfoType_corpusSubtypeSpecificInfo');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusInfoType_corpusSubtypeSpecificInfo" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusSubtypeSpecificInfo.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusSubtypeSpecificInfo" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusSubtypeSpecificInfo" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusSubtypeSpecificInfo">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#rawCorpusInfo" href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfo" coords="261,2,438,46" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfo" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfo" coords="261,56,466,100" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotationsInfo" href="OMTD-SHARE-Corpus_xsd.html#annotationsInfo" coords="261,110,439,154" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusInfoType_corpusSubtypeSpecificInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusInfoType_corpusSubtypeSpecificInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusInfoType_corpusSubtypeSpecificInfo" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusInfoType_corpusSubtypeSpecificInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusInfoType_corpusSubtypeSpecificInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusInfoType_corpusSubtypeSpecificInfo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusSubtypeSpecificInfo</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:rawCorpusInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:rawCorpusInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:annotatedCorpusInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:annotatedCorpusInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:annotationsInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:annotationsInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusSubtypeSpecificInfo&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="rawCorpusInfo"></a><div class="componentTitle">Element <span class="qname">ms:rawCorpusInfo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_rawCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_rawCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_rawCorpusInfo" style="display:block">
+                              <div class="annotation">Groups together information on corpora of all media types</div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_rawCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_rawCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_rawCorpusInfo" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpusInfo.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpusInfo" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpusInfo" id="OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpusInfo">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#rawCorpusInfoType_corpusSubtype" href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType_corpusSubtype" coords="290,40,399,84" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#rawCorpusInfoType_corpusMediaPartsType" href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType_corpusMediaPartsType" coords="290,94,432,119" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#rawCorpusInfoType" href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType" coords="208,3,373,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:rawCorpusInfoType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_rawCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_rawCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_rawCorpusInfo" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_rawCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_rawCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_rawCorpusInfo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:rawCorpusInfo</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusSubtype</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusSubtype&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusMediaPartsType</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusMediaPartsType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:rawCorpusInfo&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="rawCorpusInfoType_corpusSubtype"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:rawCorpusInfoType</a></b> / ms:corpusSubtype</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_rawCorpusInfoType_corpusSubtype" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_rawCorpusInfoType_corpusSubtype');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_rawCorpusInfoType_corpusSubtype" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusSubtype.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_rawCorpusInfoType_corpusSubtype" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_rawCorpusInfoType_corpusSubtype');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_rawCorpusInfoType_corpusSubtype" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">fixed</td>
+                                    <td><b>rawCorpus</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="rawCorpusInfoType_corpusMediaPartsType"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:rawCorpusInfoType</a></b> / ms:corpusMediaPartsType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_rawCorpusInfoType_corpusMediaPartsType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_rawCorpusInfoType_corpusMediaPartsType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_rawCorpusInfoType_corpusMediaPartsType" style="display:block">
+                              <div class="annotation">Used to specify the media type specific to corpora and group together the relevant
+                                 information
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_rawCorpusInfoType_corpusMediaPartsType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_rawCorpusInfoType_corpusMediaPartsType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_rawCorpusInfoType_corpusMediaPartsType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaPartsType.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaPartsType" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaPartsType" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaPartsType">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" coords="241,6,352,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_rawCorpusInfoType_corpusMediaPartsType" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_rawCorpusInfoType_corpusMediaPartsType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_rawCorpusInfoType_corpusMediaPartsType" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_rawCorpusInfoType_corpusMediaPartsType" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_rawCorpusInfoType_corpusMediaPartsType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_rawCorpusInfoType_corpusMediaPartsType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusMediaPartsType</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusTextParts</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusTextParts&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusMediaPartsType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:rawCorpusInfoType</a></b> / <b><a href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType_corpusMediaPartsType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusMediaPartsType</a></b> / ms:corpusTextParts</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts_1.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts_1" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts_1" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts_1">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfo" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfo" coords="230,2,426,46" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_rawCorpusInfoType_rawCorpusInfoType_corpusMediaPartsType_corpusTextParts" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusTextParts</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusTextPartInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/ms:corpusTextPartInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusTextParts&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfo"></a><div class="componentTitle">Element <span class="qname">ms:corpusTextPartInfo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_corpusTextPartInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_corpusTextPartInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_corpusTextPartInfo" style="display:block">
+                              <div class="annotation">Groups together information on the text component of a resource</div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfo');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfo" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextPartInfo.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextPartInfo" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextPartInfo" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextPartInfo">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_mediaType" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_mediaType" coords="309,40,416,103" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#lingualityInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#lingualityInfo" coords="309,113,416,138" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_languages" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_languages" coords="309,148,390,173" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_modalities" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_modalities" coords="309,183,387,208" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_sizes" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_sizes" coords="309,218,366,243" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_textFormats" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_textFormats" coords="309,253,397,278" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_characterEncodings" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_characterEncodings" coords="309,288,437,313" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_domains" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_domains" coords="309,323,380,348" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_textClassifications" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_textClassifications" coords="309,358,428,383" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_timeClassifications" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_timeClassifications" coords="309,393,429,418" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_geographicClassifications" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_geographicClassifications" coords="309,428,464,453" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#creationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#creationInfo" coords="309,463,414,488" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" coords="227,3,411,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfo" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusTextPartInfo</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:mediaType</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:mediaType&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:lingualityInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:lingualityInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:languages</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:languages&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:modalities</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:modalities&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:sizes</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:sizes&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:textFormats</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:textFormats&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:characterEncodings</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:characterEncodings&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:domains</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:domains&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:textClassifications</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:textClassifications&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:timeClassifications</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:timeClassifications&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:geographicClassifications</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:geographicClassifications&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:creationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:creationInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusTextPartInfo&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_mediaType"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:mediaType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_corpusTextPartInfoType_mediaType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_corpusTextPartInfoType_mediaType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_corpusTextPartInfoType_mediaType" style="display:block">
+                              <div class="annotation">Specifies the media type of the resource and basically corresponds to the physical
+                                 medium of the content representation. Each media type is described through a distinctive
+                                 set of features. A resource may consist of parts attributed to different types of
+                                 media. A tool/service may take as input/output more than one different media types.
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_mediaType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_mediaType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_mediaType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_mediaType.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_mediaType" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_mediaType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_mediaType" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">fixed</td>
+                                    <td><b>text</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_languages"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:languages</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_languages" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_languages');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_languages" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_languages.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_languages" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_languages" id="OMTD-SHARE-Corpus_xsd_Element_ms_languages">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#languageInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#languageInfo" coords="200,6,310,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_languages" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_languages');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_languages" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_languages" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_languages');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_languages" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:languages</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:languageInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/ms:languageInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:languages&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_modalities"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:modalities</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_modalities" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_modalities');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_modalities" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_modalities.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_modalities" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_modalities" id="OMTD-SHARE-Corpus_xsd_Element_ms_modalities">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#modalityInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#modalityInfo" coords="197,6,302,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_modalities" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_modalities');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_modalities" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_modalities" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_modalities');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_modalities" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:modalities</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:modalityInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:modalityInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:modalities&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_sizes"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:sizes</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_sizes" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_sizes');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_sizes" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_sizes.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_sizes" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_sizes" id="OMTD-SHARE-Corpus_xsd_Element_ms_sizes">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#sizeInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#sizeInfo" coords="176,6,262,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_sizes" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_sizes');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_sizes" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_sizes" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_sizes');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_sizes" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:sizes</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:sizeInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/ms:sizeInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:sizes&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_textFormats"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:textFormats</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_textFormats" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_textFormats');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_textFormats" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_textFormats.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_textFormats" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_textFormats" id="OMTD-SHARE-Corpus_xsd_Element_ms_textFormats">
+                                 <area alt="OMTD-SHARE-TextSpecific_xsd.tmp#textFormatInfo" href="OMTD-SHARE-TextSpecific_xsd.html#textFormatInfo" coords="207,6,324,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_textFormats" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_textFormats');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_textFormats" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_textFormats" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_textFormats');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_textFormats" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:textFormats</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:textFormatInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:textFormatInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:textFormats&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_characterEncodings"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:characterEncodings</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_characterEncodings" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_characterEncodings');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_characterEncodings" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_characterEncodings.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_characterEncodings" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_characterEncodings" id="OMTD-SHARE-Corpus_xsd_Element_ms_characterEncodings">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#characterEncodingInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#characterEncodingInfo" coords="247,6,404,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_characterEncodings" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_characterEncodings');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_characterEncodings" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_characterEncodings" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_characterEncodings');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_characterEncodings" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:characterEncodings</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:characterEncodingInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:characterEncodingInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:characterEncodings&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_domains"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:domains</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_domains" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_domains');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_domains" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_domains.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_domains" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_domains" id="OMTD-SHARE-Corpus_xsd_Element_ms_domains">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#domainInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#domainInfo" coords="190,6,290,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_domains" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_domains');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_domains" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_domains" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_domains');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_domains" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:domains</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:domainInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:domainInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:domains&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_textClassifications"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:textClassifications</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_textClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_textClassifications');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_textClassifications" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_textClassifications.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_textClassifications" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_textClassifications" id="OMTD-SHARE-Corpus_xsd_Element_ms_textClassifications">
+                                 <area alt="OMTD-SHARE-TextSpecific_xsd.tmp#textClassificationInfo" href="OMTD-SHARE-TextSpecific_xsd.html#textClassificationInfo" coords="238,6,386,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_textClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_textClassifications');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_textClassifications" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_textClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_textClassifications');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_textClassifications" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:textClassifications</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:textClassificationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:textClassificationInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:textClassifications&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_timeClassifications"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:timeClassifications</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_timeClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_timeClassifications');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_timeClassifications" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_timeClassifications.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_timeClassifications" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_timeClassifications" id="OMTD-SHARE-Corpus_xsd_Element_ms_timeClassifications">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#timeCoverageInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#timeCoverageInfo" coords="239,6,371,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_timeClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_timeClassifications');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_timeClassifications" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_timeClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_timeClassifications');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_timeClassifications" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:timeClassifications</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:timeCoverageInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:timeCoverageInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:timeClassifications&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType_geographicClassifications"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusTextPartInfoType</a></b> / ms:geographicClassifications</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType_geographicClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType_geographicClassifications');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType_geographicClassifications" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_geographicClassifications.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_geographicClassifications" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_geographicClassifications" id="OMTD-SHARE-Corpus_xsd_Element_ms_geographicClassifications">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#geographicCoverageInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#geographicCoverageInfo" coords="274,6,441,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusTextPartInfoType_geographicClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusTextPartInfoType_geographicClassifications');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusTextPartInfoType_geographicClassifications" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusTextPartInfoType_geographicClassifications" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusTextPartInfoType_geographicClassifications');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusTextPartInfoType_geographicClassifications" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:geographicClassifications</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:geographicCoverageInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/ms:geographicCoverageInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:geographicClassifications&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotatedCorpusInfo"></a><div class="componentTitle">Element <span class="qname">ms:annotatedCorpusInfo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_annotatedCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_annotatedCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_annotatedCorpusInfo" style="display:block">
+                              <div class="annotation">Groups together information on annotated corpora of all media types</div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotatedCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotatedCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotatedCorpusInfo" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_annotatedCorpusInfo.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_annotatedCorpusInfo" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_annotatedCorpusInfo" id="OMTD-SHARE-Corpus_xsd_Element_ms_annotatedCorpusInfo">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfoType_corpusSubtype" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_corpusSubtype" coords="318,40,455,84" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfoType_corpusMediaParts" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_corpusMediaParts" coords="318,94,436,119" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfoType" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType" coords="236,3,429,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotatedCorpusInfoType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotatedCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotatedCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotatedCorpusInfo" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_annotatedCorpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_annotatedCorpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_annotatedCorpusInfo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:annotatedCorpusInfo</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusSubtype</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusSubtype&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusMediaParts</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusMediaParts&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:annotatedCorpusInfo&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotatedCorpusInfoType_corpusSubtype"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotatedCorpusInfoType</a></b> / ms:corpusSubtype</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotatedCorpusInfoType_corpusSubtype" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotatedCorpusInfoType_corpusSubtype');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotatedCorpusInfoType_corpusSubtype" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusSubtype_1.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotatedCorpusInfoType_corpusSubtype" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotatedCorpusInfoType_corpusSubtype');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotatedCorpusInfoType_corpusSubtype" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">fixed</td>
+                                    <td><b>annotatedCorpus</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotatedCorpusInfoType_corpusMediaParts"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotatedCorpusInfoType</a></b> / ms:corpusMediaParts</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_annotatedCorpusInfoType_corpusMediaParts" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_annotatedCorpusInfoType_corpusMediaParts');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_annotatedCorpusInfoType_corpusMediaParts" style="display:block">
+                              <div class="annotation">Used to specify the media type specific to corpora and group together the relevant
+                                 information
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotatedCorpusInfoType_corpusMediaParts" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotatedCorpusInfoType_corpusMediaParts');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotatedCorpusInfoType_corpusMediaParts" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaParts.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaParts" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaParts" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusMediaParts">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" coords="217,2,328,27" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" coords="217,37,304,62" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotatedCorpusInfoType_corpusMediaParts" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotatedCorpusInfoType_corpusMediaParts');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotatedCorpusInfoType_corpusMediaParts" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_annotatedCorpusInfoType_corpusMediaParts" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_annotatedCorpusInfoType_corpusMediaParts');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_annotatedCorpusInfoType_corpusMediaParts" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusMediaParts</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusTextParts</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusTextParts&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:annotations</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:annotations&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusMediaParts&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotatedCorpusInfoType</a></b> / <b><a href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_corpusMediaParts" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusMediaParts</a></b> / ms:corpusTextParts</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusTextParts">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfo" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfo" coords="230,2,426,46" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_corpusTextParts" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusTextParts</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusTextPartInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/ms:corpusTextPartInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusTextParts&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotatedCorpusInfoType</a></b> / <b><a href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_corpusMediaParts" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusMediaParts</a></b> / ms:annotations</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_annotations.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_annotations" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_annotations" id="OMTD-SHARE-Corpus_xsd_Element_ms_annotations">
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#annotationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#annotationInfo" coords="206,6,322,31" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_annotatedCorpusInfoType_annotatedCorpusInfoType_corpusMediaParts_annotations" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:annotations</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:annotationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/ms:annotationInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:annotations&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotationsInfo"></a><div class="componentTitle">Element <span class="qname">ms:annotationsInfo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_annotationsInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_annotationsInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_annotationsInfo" style="display:block">
+                              <div class="annotation">Groups together information on annotations</div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotationsInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotationsInfo');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotationsInfo" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_annotationsInfo.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_annotationsInfo" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_annotationsInfo" id="OMTD-SHARE-Corpus_xsd_Element_ms_annotationsInfo">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotationsInfoType_corpusSubtype" href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType_corpusSubtype" coords="291,40,401,84" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotationsInfoType_rawCorpus" href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType_rawCorpus" coords="291,94,475,138" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#annotationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#annotationInfo" coords="291,148,407,173" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotationsInfoType" href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType" coords="209,3,375,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotationsInfoType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotationsInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotationsInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotationsInfo" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_annotationsInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_annotationsInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_annotationsInfo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:annotationsInfo</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusSubtype</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusSubtype&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:rawCorpus</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:rawCorpus&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:annotationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:annotationInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:annotationsInfo&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotationsInfoType_corpusSubtype"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotationsInfoType</a></b> / ms:corpusSubtype</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotationsInfoType_corpusSubtype" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotationsInfoType_corpusSubtype');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotationsInfoType_corpusSubtype" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusSubtype_2.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotationsInfoType_corpusSubtype" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotationsInfoType_corpusSubtype');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotationsInfoType_corpusSubtype" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">fixed</td>
+                                    <td><b>annotations</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotationsInfoType_rawCorpus"></a><div class="componentTitle">Element <span class="qname"><b><a href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:annotationsInfoType</a></b> / ms:rawCorpus</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotationsInfoType_rawCorpus" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotationsInfoType_rawCorpus');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotationsInfoType_rawCorpus" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpus.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpus" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpus" id="OMTD-SHARE-Corpus_xsd_Element_ms_rawCorpus">
+                                 <area alt="OMTD-SHARE-GlobalTypes_xsd.tmp#relatedResourceType_resourceIdentifiers" href="OMTD-SHARE-GlobalTypes_xsd.html#relatedResourceType_resourceIdentifiers" coords="297,40,419,65" />
+                                 <area alt="OMTD-SHARE-GlobalTypes_xsd.tmp#relatedResourceType_resourceNames" href="OMTD-SHARE-GlobalTypes_xsd.html#relatedResourceType_resourceNames" coords="297,75,405,100" />
+                                 <area alt="OMTD-SHARE-GlobalTypes_xsd.tmp#relatedResourceType" href="OMTD-SHARE-GlobalTypes_xsd.html#relatedResourceType" coords="215,3,387,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="OMTD-SHARE-GlobalTypes_xsd.html#relatedResourceType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-GlobalTypes.xsd')">ms:relatedResourceType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_annotationsInfoType_rawCorpus" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_annotationsInfoType_rawCorpus');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_annotationsInfoType_rawCorpus" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_annotationsInfoType_rawCorpus" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_annotationsInfoType_rawCorpus');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_annotationsInfoType_rawCorpus" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:rawCorpus</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:resourceIdentifiers</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:resourceIdentifiers&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:resourceNames</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:resourceNames&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:rawCorpus&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusMetadataRecord"></a><div class="componentTitle">Element <span class="qname">ms:corpusMetadataRecord</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusMetadataRecord" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusMetadataRecord');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusMetadataRecord" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusMetadataRecord.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusMetadataRecord" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusMetadataRecord" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusMetadataRecord">
+                                 <area alt="OMTD-SHARE-GlobalTypes_xsd.tmp#metadataHeaderInfo" href="OMTD-SHARE-GlobalTypes_xsd.html#metadataHeaderInfo" coords="243,2,388,27" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfo" href="OMTD-SHARE-Corpus_xsd.html#corpusInfo" coords="243,37,399,81" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusMetadataRecord" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusMetadataRecord');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusMetadataRecord" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusMetadataRecord" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusMetadataRecord');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusMetadataRecord" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusMetadataRecord</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:metadataHeaderInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:metadataHeaderInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusMetadataRecord&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusInfo"></a><div class="componentTitle">Element <span class="qname">ms:corpusInfo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_corpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_corpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_corpusInfo" style="display:block">
+                              <div class="annotation">Groups together all information related to corpora</div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusInfo');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusInfo" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Element_ms_corpusInfo.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Element_ms_corpusInfo" /><map name="OMTD-SHARE-Corpus_xsd_Element_ms_corpusInfo" id="OMTD-SHARE-Corpus_xsd_Element_ms_corpusInfo">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_resourceType" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_resourceType" coords="269,40,376,103" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#identificationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#identificationInfo" coords="269,113,395,138" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#contactInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#contactInfo" coords="269,148,371,173" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#versionInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#versionInfo" coords="269,183,371,208" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_validationInfos" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_validationInfos" coords="269,218,369,243" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#usageInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#usageInfo" coords="269,253,365,278" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#resourceDocumentationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#resourceDocumentationInfo" coords="269,288,450,313" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#resourceCreationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#resourceCreationInfo" coords="269,323,419,348" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_distributionInfos" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_distributionInfos" coords="269,358,376,383" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_corpusSubtypeSpecificInfo" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_corpusSubtypeSpecificInfo" coords="269,393,431,418" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType" coords="187,3,331,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType" target="mainFrame" title="http://www.meta-share.org/OMTD-SHARE_XMLSchema" onclick="updatePageTitle('Schema documentation for OMTD-SHARE-Corpus.xsd')">ms:corpusInfoType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_corpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_corpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_corpusInfo" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_corpusInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_corpusInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_corpusInfo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;ms:corpusInfo</span><span class="tT"> </span><span class="tAN">xmlns:ms=</span><span class="tAV">"http://www.meta-share.org/OMTD-SHARE_XMLSchema"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:resourceType</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:resourceType&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:identificationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:identificationInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:contactInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:contactInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:versionInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:versionInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:validationInfos</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:validationInfos&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:usageInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:usageInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:resourceDocumentationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:resourceDocumentationInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:resourceCreationInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/ms:resourceCreationInfo&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:distributionInfos</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:distributionInfos&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;ms:corpusSubtypeSpecificInfo</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/ms:corpusSubtypeSpecificInfo&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/ms:corpusInfo&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusInfoType"></a><div class="componentTitle">Complex Type <span class="qname">ms:corpusInfoType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusInfoType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusInfoType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusInfoType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusInfoType.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusInfoType" /><map name="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusInfoType" id="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusInfoType">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_resourceType" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_resourceType" coords="230,0,337,63" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#identificationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#identificationInfo" coords="230,73,356,98" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#contactInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#contactInfo" coords="230,108,332,133" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#versionInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#versionInfo" coords="230,143,332,168" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_validationInfos" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_validationInfos" coords="230,178,330,203" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#usageInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#usageInfo" coords="230,213,326,238" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#resourceDocumentationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#resourceDocumentationInfo" coords="230,248,411,273" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#resourceCreationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#resourceCreationInfo" coords="230,283,380,308" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_distributionInfos" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_distributionInfos" coords="230,318,337,343" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusInfoType_corpusSubtypeSpecificInfo" href="OMTD-SHARE-Corpus_xsd.html#corpusInfoType_corpusSubtypeSpecificInfo" coords="230,353,392,378" /></map></div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="rawCorpusInfoType"></a><div class="componentTitle">Complex Type <span class="qname">ms:rawCorpusInfoType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_rawCorpusInfoType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_rawCorpusInfoType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_rawCorpusInfoType" style="display:block">
+                              <div class="annotation">Groups together all information related to raw corpora</div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_rawCorpusInfoType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_rawCorpusInfoType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_rawCorpusInfoType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Complex_Type_ms_rawCorpusInfoType.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Complex_Type_ms_rawCorpusInfoType" /><map name="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_rawCorpusInfoType" id="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_rawCorpusInfoType">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#rawCorpusInfoType_corpusSubtype" href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType_corpusSubtype" coords="251,0,360,44" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#rawCorpusInfoType_corpusMediaPartsType" href="OMTD-SHARE-Corpus_xsd.html#rawCorpusInfoType_corpusMediaPartsType" coords="251,54,393,79" /></map></div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="corpusTextPartInfoType"></a><div class="componentTitle">Complex Type <span class="qname">ms:corpusTextPartInfoType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_corpusTextPartInfoType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_corpusTextPartInfoType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_corpusTextPartInfoType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusTextPartInfoType.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusTextPartInfoType" /><map name="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusTextPartInfoType" id="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_corpusTextPartInfoType">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_mediaType" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_mediaType" coords="270,0,377,63" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#lingualityInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#lingualityInfo" coords="270,73,377,98" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_languages" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_languages" coords="270,108,351,133" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_modalities" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_modalities" coords="270,143,348,168" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_sizes" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_sizes" coords="270,178,327,203" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_textFormats" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_textFormats" coords="270,213,358,238" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_characterEncodings" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_characterEncodings" coords="270,248,398,273" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_domains" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_domains" coords="270,283,341,308" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_textClassifications" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_textClassifications" coords="270,318,389,343" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_timeClassifications" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_timeClassifications" coords="270,353,390,378" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#corpusTextPartInfoType_geographicClassifications" href="OMTD-SHARE-Corpus_xsd.html#corpusTextPartInfoType_geographicClassifications" coords="270,388,425,413" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#creationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#creationInfo" coords="270,423,375,448" /></map></div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotatedCorpusInfoType"></a><div class="componentTitle">Complex Type <span class="qname">ms:annotatedCorpusInfoType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_annotatedCorpusInfoType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_annotatedCorpusInfoType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_annotatedCorpusInfoType" style="display:block">
+                              <div class="annotation">Groups together all information related to annotated corpora</div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotatedCorpusInfoType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotatedCorpusInfoType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotatedCorpusInfoType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotatedCorpusInfoType.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotatedCorpusInfoType" /><map name="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotatedCorpusInfoType" id="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotatedCorpusInfoType">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfoType_corpusSubtype" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_corpusSubtype" coords="279,0,416,44" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotatedCorpusInfoType_corpusMediaParts" href="OMTD-SHARE-Corpus_xsd.html#annotatedCorpusInfoType_corpusMediaParts" coords="279,54,397,79" /></map></div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="annotationsInfoType"></a><div class="componentTitle">Complex Type <span class="qname">ms:annotationsInfoType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_annotationsInfoType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_annotationsInfoType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_annotationsInfoType" style="display:block"><img alt="Diagram" border="0" src="img/OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotationsInfoType.jpeg" usemap="#OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotationsInfoType" /><map name="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotationsInfoType" id="OMTD-SHARE-Corpus_xsd_Complex_Type_ms_annotationsInfoType">
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotationsInfoType_corpusSubtype" href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType_corpusSubtype" coords="252,0,362,44" />
+                                 <area alt="OMTD-SHARE-Corpus_xsd.tmp#annotationsInfoType_rawCorpus" href="OMTD-SHARE-Corpus_xsd.html#annotationsInfoType_rawCorpus" coords="252,54,436,98" />
+                                 <area alt="OMTD-SHARE-ResourceCommon_xsd.tmp#annotationInfo" href="OMTD-SHARE-ResourceCommon_xsd.html#annotationInfo" coords="252,108,368,133" /></map></div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>
