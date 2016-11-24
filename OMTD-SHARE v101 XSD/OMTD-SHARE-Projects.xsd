@@ -66,11 +66,7 @@
 			<xs:element name="projectIdentifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="projectIdentifier" type="ms:projectIdentifierType" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>A unique identifier for research projects</xs:documentation>
-							</xs:annotation>
-						</xs:element>
+						<xs:element ref="ms:projectIdentifier" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

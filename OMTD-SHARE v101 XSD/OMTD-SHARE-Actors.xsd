@@ -100,18 +100,7 @@
 			<xs:element name="personIdentifiers" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="personIdentifier" type="ms:personIdentifierType" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Reference to any kind of identifier used for a person; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
-								<xs:appinfo>
-									<label>Identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<sameAs>dataCite:nameIdentifier</sameAs>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
+						<xs:element ref="ms:personIdentifier" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -378,15 +367,7 @@
 							<xs:complexType>
 								<xs:complexContent>
 									<xs:extension base="ms:myString">
-										<xs:attribute name="nameType" use="required">
-											<xs:simpleType>
-												<xs:restriction base="xs:string">
-													<xs:enumeration value="shortName"/>
-													<xs:enumeration value="alternativeName"/>
-													<xs:enumeration value="translatedName"/>
-												</xs:restriction>
-											</xs:simpleType>
-										</xs:attribute>
+										<xs:attribute ref="ms:nameType" use="required"/>
 									</xs:extension>
 								</xs:complexContent>
 							</xs:complexType>
@@ -401,19 +382,7 @@
 			<xs:element name="organizationIdentifiers" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="organizationIdentifier" type="ms:organizationIdentifierType" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Reference to any kind of identifier used for an organization; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
-								<xs:appinfo>
-									<label>Identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<sameAs>dataCite:nameIdentifier</sameAs>
-								</xs:appinfo>
-							</xs:annotation>
-							<!-- CHECK: I have not been able to add the restriction of length 100 -->
-						</xs:element>
+						<xs:element ref="ms:organizationIdentifier" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -431,15 +400,7 @@
 							<xs:complexType>
 								<xs:complexContent>
 									<xs:extension base="ms:myString">
-										<xs:attribute name="nameType" use="optional">
-											<xs:simpleType>
-												<xs:restriction base="xs:string">
-													<xs:enumeration value="shortName"/>
-													<xs:enumeration value="alternativeName"/>
-													<xs:enumeration value="translatedName"/>
-												</xs:restriction>
-											</xs:simpleType>
-										</xs:attribute>
+										<xs:attribute ref="ms:nameType" use="optional"/>
 									</xs:extension>
 								</xs:complexContent>
 							</xs:complexType>
@@ -505,4 +466,13 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
+	<xs:attribute name="nameType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="shortName"/>
+				<xs:enumeration value="alternativeName"/>
+				<xs:enumeration value="translatedName"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
 </xs:schema>

@@ -64,6 +64,9 @@
 			<xs:element name="fullText" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>The full text of the publication in simple text format</xs:documentation>
+					<xs:appinfo>
+						<label>Full text</label>
+					</xs:appinfo>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:simpleContent>

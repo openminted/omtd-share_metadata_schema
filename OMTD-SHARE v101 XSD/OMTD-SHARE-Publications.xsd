@@ -12,6 +12,9 @@
 			<xs:element name="document">
 				<xs:annotation>
 					<xs:documentation>Root element for documents (single files); choice among raw publications and annotated publications</xs:documentation>
+					<xs:appinfo>
+						<label>Document</label>
+					</xs:appinfo>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:choice>
@@ -33,6 +36,9 @@
 			<xs:element name="documentType">
 				<xs:annotation>
 					<xs:documentation>Specifies whether the record includes direct access to the full text, the abstract in txt format (inside the record) or serves only as a bibliographic record (includes only metadata)</xs:documentation>
+					<xs:appinfo>
+						<label>Document type</label>
+					</xs:appinfo>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
@@ -239,19 +245,7 @@
 			<xs:element name="identifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="publicationIdentifier" type="ms:publicationIdentifierType" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
-								<xs:appinfo>
-									<label>Publication identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<!-- currently DataCite only supports DOI's -->
-									<narrowMatch>dataCite:identifier</narrowMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
+						<xs:element ref="ms:publicationIdentifier" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -325,15 +319,7 @@
 										<xs:complexType>
 											<xs:complexContent>
 												<xs:extension base="ms:relatedPersonType">
-													<xs:attribute name="contributorType">
-														<xs:simpleType>
-															<xs:restriction base="xs:string">
-																<xs:enumeration value="editor"/>
-																<xs:enumeration value="translator"/>
-																<xs:enumeration value="other"/>
-															</xs:restriction>
-														</xs:simpleType>
-													</xs:attribute>
+													<xs:attribute ref="ms:contributorType"/>
 												</xs:extension>
 											</xs:complexContent>
 										</xs:complexType>
@@ -342,15 +328,7 @@
 										<xs:complexType>
 											<xs:complexContent>
 												<xs:extension base="ms:relatedOrganizationType">
-													<xs:attribute name="contributorType">
-														<xs:simpleType>
-															<xs:restriction base="xs:string">
-																<xs:enumeration value="editor"/>
-																<xs:enumeration value="translator"/>
-																<xs:enumeration value="other"/>
-															</xs:restriction>
-														</xs:simpleType>
-													</xs:attribute>
+													<xs:attribute ref="ms:contributorType"/>
 												</xs:extension>
 											</xs:complexContent>
 										</xs:complexType>
@@ -375,6 +353,9 @@
 			<xs:element name="inBook" type="ms:relatedDocumentInfoType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>The title or identifier of a book in which a publication appears (e.g. as a chapter, as article in a collection of articles, conference proceedings etc.)</xs:documentation>
+					<xs:appinfo>
+						<label>In book</label>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="volume" type="xs:string" minOccurs="0">
@@ -553,19 +534,7 @@
 			<xs:element name="identifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="journalIdentifier" type="ms:journalIdentifierType" minOccurs="1" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
-								<xs:appinfo>
-									<label>Journal Identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<!-- currently DataCite only supports DOI's -->
-									<sameAs>dataCite:identifier</sameAs>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
+						<xs:element ref="ms:journalIdentifier" minOccurs="1" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -679,4 +648,13 @@
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
+	<xs:attribute name="contributorType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="editor"/>
+				<xs:enumeration value="translator"/>
+				<xs:enumeration value="other"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
 </xs:schema>

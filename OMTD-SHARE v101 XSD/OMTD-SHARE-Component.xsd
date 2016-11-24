@@ -632,26 +632,7 @@ words) in two languages</xs:documentation>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
-						<xs:element name="requiresHardware" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Hardware required for running a s/w component and/or computational grammar</xs:documentation>
-								<xs:appinfo>
-									<recommended>true</recommended>
-									<label>Requires hardware</label>
-								</xs:appinfo>
-							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:maxLength value="100"/>
-									<xs:enumeration value="graphicCard"/>
-									<xs:enumeration value="microphone"/>
-									<xs:enumeration value="ocrSystem"/>
-									<xs:enumeration value="specialHardwareEquipment"/>
-									<xs:enumeration value="none"/>
-									<xs:enumeration value="other"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:element>
+						<xs:element ref="ms:requiresHardware" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -711,16 +692,16 @@ words) in two languages</xs:documentation>
 	</xs:complexType>
 	<xs:complexType name="processingResourceInfoType">
 		<xs:sequence>
-			<xs:element name="resourceTypes">
+			<xs:element name="processingResourceTypes">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="resourceType" maxOccurs="unbounded">
+						<xs:element name="processingResourceType" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>The type of the resource that a component takes as input or produces as output</xs:documentation>
 								<xs:appinfo>
 									<recommended>true</recommended>
 									<relation>one-to-many</relation>
-									<label>Resource type</label>
+									<label>Processing resource type</label>
 								</xs:appinfo>
 							</xs:annotation>
 							<xs:simpleType>

@@ -76,25 +76,7 @@
 			<xs:element name="resourceNames">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="resourceName" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>The full name by which the resource is known; the element can be repeated for the different language versions using the "lang" attribute to specify the language</xs:documentation>
-								<xs:appinfo>
-									<xs:label>Resource name</xs:label>
-								</xs:appinfo>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:simpleContent>
-									<xs:restriction base="ms:myString">
-										<xs:maxLength value="500"/>
-									</xs:restriction>
-								</xs:simpleContent>
-							</xs:complexType>
-							<xs:unique name="uniqueLang2">
-								<xs:selector xpath="."/>
-								<xs:field xpath="@lang"/>
-							</xs:unique>
-						</xs:element>
+						<xs:element ref="ms:resourceName" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -535,6 +517,7 @@
 					<xs:documentation>Specifies whether the resource is created automatically or in a manual or interactive mode </xs:documentation>
 					<xs:appinfo>
 						<closeMatch>http://hdl.handle.net/11459/CCR_C-2516_cd9adb6a-3f15-12ba-e7c7-1317906cc09e (ccr:derivationMode)</closeMatch>
+						<label>Creation mode</label>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -791,25 +774,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="requiresHardware" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>Hardware required for running a s/w component and/or computational grammar</xs:documentation>
-					<xs:appinfo>
-						<label>Requires hardware</label>
-					</xs:appinfo>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:maxLength value="100"/>
-						<xs:enumeration value="graphicCard"/>
-						<xs:enumeration value="microphone"/>
-						<xs:enumeration value="ocrSystem"/>
-						<xs:enumeration value="specialHardwareEquipment"/>
-						<xs:enumeration value="none"/>
-						<xs:enumeration value="other"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
+			<xs:element ref="ms:requiresHardware" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="requiresLRs" type="ms:relatedResourceType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>If for running a s/w component and/or computational grammar, specific LRs (e.g. a grammar, a list of words etc.) are required</xs:documentation>
@@ -3092,6 +3057,26 @@
 				<xs:enumeration value="morphology"/>
 				<xs:enumeration value="syntax"/>
 				<xs:enumeration value="pragmatics"/>
+				<xs:enumeration value="other"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="requiresHardware">
+		<xs:annotation>
+			<xs:documentation>Hardware required for running a s/w component and/or computational grammar</xs:documentation>
+			<xs:appinfo>
+				<recommended>true</recommended>
+				<label>Requires hardware</label>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+				<xs:enumeration value="graphicCard"/>
+				<xs:enumeration value="microphone"/>
+				<xs:enumeration value="ocrSystem"/>
+				<xs:enumeration value="specialHardwareEquipment"/>
+				<xs:enumeration value="none"/>
 				<xs:enumeration value="other"/>
 			</xs:restriction>
 		</xs:simpleType>

@@ -244,6 +244,9 @@
 			<xs:element name="day" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Optional day, always in two-digit format</xs:documentation>
+					<xs:appinfo>
+						<label>Day</label>
+					</xs:appinfo>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:positiveInteger">
@@ -256,6 +259,9 @@
 			<xs:element name="month" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Optional month; to be used in two-digit format</xs:documentation>
+					<xs:appinfo>
+						<label>Month</label>
+					</xs:appinfo>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:positiveInteger">
@@ -268,6 +274,9 @@
 			<xs:element name="year" minOccurs="1">
 				<xs:annotation>
 					<xs:documentation>for year; to be used with four digits always</xs:documentation>
+					<xs:appinfo>
+						<label>Year</label>
+					</xs:appinfo>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:positiveInteger">
@@ -602,7 +611,7 @@
 			<xs:element name="personIdentifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="personIdentifier" type="ms:personIdentifierType" maxOccurs="unbounded">
+						<xs:element ref="ms:personIdentifier" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:appinfo>
 									<relation>one-to-one</relation>
@@ -647,7 +656,7 @@
 			<xs:element name="organizationIdentifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="organizationIdentifier" type="ms:organizationIdentifierType" maxOccurs="unbounded">
+						<xs:element ref="ms:organizationIdentifier" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:appinfo>
 									<relation>one-to-one</relation>
@@ -725,7 +734,7 @@
 			<xs:element name="projectIdentifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="projectIdentifier" type="ms:projectIdentifierType" maxOccurs="unbounded">
+						<xs:element ref="ms:projectIdentifier" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:appinfo>
 									<relation>one-to-one</relation>
@@ -770,7 +779,7 @@
 			<xs:element name="journalIdentifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="journalIdentifier" type="ms:journalIdentifierType" maxOccurs="unbounded">
+						<xs:element ref="ms:journalIdentifier" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:appinfo>
 									<relation>one-to-one</relation>
@@ -817,8 +826,10 @@
 					<xs:sequence>
 						<xs:element name="repositoryIdentifier" type="ms:repositoryIdentifierType" maxOccurs="unbounded">
 							<xs:annotation>
+								<xs:documentation>Reference to the identifier used for repositories, archives etc.</xs:documentation>
 								<xs:appinfo>
 									<relation>one-to-one</relation>
+									<label>Repository identifier</label>
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
@@ -851,25 +862,7 @@
 			<xs:element name="resourceNames">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="resourceName" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>The name of the resource</xs:documentation>
-								<xs:appinfo>
-									<label>Resource name</label>
-								</xs:appinfo>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:simpleContent>
-									<xs:restriction base="ms:myString">
-										<xs:maxLength value="500"/>
-									</xs:restriction>
-								</xs:simpleContent>
-							</xs:complexType>
-							<xs:unique name="uniqueLang890">
-								<xs:selector xpath="."/>
-								<xs:field xpath="@lang"/>
-							</xs:unique>
-						</xs:element>
+						<xs:element ref="ms:resourceName" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -893,7 +886,7 @@
 			<xs:element name="publicationIdentifiers">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="publicationIdentifier" type="ms:publicationIdentifierType" maxOccurs="unbounded"/>
+						<xs:element ref="ms:publicationIdentifier" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -909,7 +902,7 @@
 				<xs:annotation>
 					<xs:documentation>A persistent identifier for the metadata record itself</xs:documentation>
 					<xs:appinfo>
-						<label>Metadata link</label>
+						<label>Metadata record identifier</label>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -1133,4 +1126,78 @@
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
+						<xs:element name="resourceName">
+							<xs:annotation>
+								<xs:documentation>The full name by which the resource is known; the element can be repeated for the different language versions using the "lang" attribute to specify the language</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Resource name</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang2">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+						<xs:element name="organizationIdentifier" type="ms:organizationIdentifierType">
+							<xs:annotation>
+								<xs:documentation>Reference to any kind of identifier used for an organization; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
+								<xs:appinfo>
+									<label>Organization identifier</label>
+									<sameAs>dct:identifier</sameAs>
+									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+									<sameAs>dataCite:nameIdentifier</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="personIdentifier" type="ms:personIdentifierType">
+							<xs:annotation>
+								<xs:documentation>Reference to any kind of identifier used for a person; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
+								<xs:appinfo>
+									<label>Person identifier</label>
+									<sameAs>dct:identifier</sameAs>
+									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+									<sameAs>dataCite:nameIdentifier</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="publicationIdentifier" type="ms:publicationIdentifierType">
+							<xs:annotation>
+								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
+								<xs:appinfo>
+									<label>Publication identifier</label>
+									<sameAs>dct:identifier</sameAs>
+									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+									<!-- currently DataCite only supports DOI's -->
+									<narrowMatch>dataCite:identifier</narrowMatch>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="projectIdentifier" type="ms:projectIdentifierType">
+							<xs:annotation>
+								<xs:documentation>A unique identifier for research projects</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="journalIdentifier" type="ms:journalIdentifierType">
+							<xs:annotation>
+								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
+								<xs:appinfo>
+									<label>Journal Identifier</label>
+									<sameAs>dct:identifier</sameAs>
+									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+									<!-- currently DataCite only supports DOI's -->
+									<sameAs>dataCite:identifier</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
 </xs:schema>
