@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
 <!-- edited by ILSP/Athena R.C. -->
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema/v101" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema/v101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-ResourceCommon.xsd"/>
 	<xs:complexType name="componentInfoType">
@@ -12,13 +12,13 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="resourceType" fixed="component">
+				<xs:annotation>
+					<xs:documentation>Specifies the type of the resource being described</xs:documentation>
+					<xs:appinfo>
+						<label>Resource type</label>
+					</xs:appinfo>
+				</xs:annotation>
 				<xs:simpleType>
-					<xs:annotation>
-						<xs:documentation/>
-						<xs:appinfo>
-							<label>Resource type</label>
-						</xs:appinfo>
-					</xs:annotation>
 					<xs:restriction base="xs:string">
 						<xs:enumeration value="component"/>
 					</xs:restriction>

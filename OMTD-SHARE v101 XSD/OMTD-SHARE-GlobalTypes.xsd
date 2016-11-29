@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited by ILSP/Athena R.C. -->
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema/v101" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema/v101" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-ISOVocabularies.xsd"/>
 	<!-- definition of global simple types -->
 	<xs:simpleType name="httpURI">
@@ -1126,78 +1126,78 @@
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
-						<xs:element name="resourceName">
-							<xs:annotation>
-								<xs:documentation>The full name by which the resource is known; the element can be repeated for the different language versions using the "lang" attribute to specify the language</xs:documentation>
-								<xs:appinfo>
-									<xs:label>Resource name</xs:label>
-								</xs:appinfo>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:simpleContent>
-									<xs:restriction base="ms:myString">
-										<xs:maxLength value="500"/>
-									</xs:restriction>
-								</xs:simpleContent>
-							</xs:complexType>
-							<xs:unique name="uniqueLang2">
-								<xs:selector xpath="."/>
-								<xs:field xpath="@lang"/>
-							</xs:unique>
-						</xs:element>
-						<xs:element name="organizationIdentifier" type="ms:organizationIdentifierType">
-							<xs:annotation>
-								<xs:documentation>Reference to any kind of identifier used for an organization; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
-								<xs:appinfo>
-									<label>Organization identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<sameAs>dataCite:nameIdentifier</sameAs>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="personIdentifier" type="ms:personIdentifierType">
-							<xs:annotation>
-								<xs:documentation>Reference to any kind of identifier used for a person; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
-								<xs:appinfo>
-									<label>Person identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<sameAs>dataCite:nameIdentifier</sameAs>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="publicationIdentifier" type="ms:publicationIdentifierType">
-							<xs:annotation>
-								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
-								<xs:appinfo>
-									<label>Publication identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<!-- currently DataCite only supports DOI's -->
-									<narrowMatch>dataCite:identifier</narrowMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="projectIdentifier" type="ms:projectIdentifierType">
-							<xs:annotation>
-								<xs:documentation>A unique identifier for research projects</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="journalIdentifier" type="ms:journalIdentifierType">
-							<xs:annotation>
-								<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
-								<xs:appinfo>
-									<label>Journal Identifier</label>
-									<sameAs>dct:identifier</sameAs>
-									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
-									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
-									<!-- currently DataCite only supports DOI's -->
-									<sameAs>dataCite:identifier</sameAs>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
+	<xs:element name="resourceName">
+		<xs:annotation>
+			<xs:documentation>The full name by which the resource is known; the element can be repeated for the different language versions using the "lang" attribute to specify the language</xs:documentation>
+			<xs:appinfo>
+				<xs:label>Resource name</xs:label>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:restriction base="ms:myString">
+					<xs:maxLength value="500"/>
+				</xs:restriction>
+			</xs:simpleContent>
+		</xs:complexType>
+		<xs:unique name="uniqueLang2">
+			<xs:selector xpath="."/>
+			<xs:field xpath="@lang"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="organizationIdentifier" type="ms:organizationIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Reference to any kind of identifier used for an organization; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
+			<xs:appinfo>
+				<label>Organization identifier</label>
+				<sameAs>dct:identifier</sameAs>
+				<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+				<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+				<sameAs>dataCite:nameIdentifier</sameAs>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="personIdentifier" type="ms:personIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Reference to any kind of identifier used for a person; the attribute should be used to specify the type of identifier (e.g. ORCID, LinkedIn etc.)</xs:documentation>
+			<xs:appinfo>
+				<label>Person identifier</label>
+				<sameAs>dct:identifier</sameAs>
+				<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+				<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+				<sameAs>dataCite:nameIdentifier</sameAs>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="publicationIdentifier" type="ms:publicationIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
+			<xs:appinfo>
+				<label>Publication identifier</label>
+				<sameAs>dct:identifier</sameAs>
+				<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+				<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+				<!-- currently DataCite only supports DOI's -->
+				<narrowMatch>dataCite:identifier</narrowMatch>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="projectIdentifier" type="ms:projectIdentifierType">
+		<xs:annotation>
+			<xs:documentation>A unique identifier for research projects</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="journalIdentifier" type="ms:journalIdentifierType">
+		<xs:annotation>
+			<xs:documentation>Reference to a DOI (recommended) or any kind of identifier used for the publication</xs:documentation>
+			<xs:appinfo>
+				<label>Journal Identifier</label>
+				<sameAs>dct:identifier</sameAs>
+				<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
+				<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
+				<!-- currently DataCite only supports DOI's -->
+				<sameAs>dataCite:identifier</sameAs>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
 </xs:schema>
