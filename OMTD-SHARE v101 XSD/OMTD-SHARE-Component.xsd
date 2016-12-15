@@ -80,7 +80,7 @@
 										<xs:annotation>
 											<xs:documentation>A component or interface that renders the contents of a resource in a graphic way for visualisation purposes</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -88,7 +88,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that helps in the debugging process</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -96,7 +96,7 @@
 										<xs:annotation>
 											<xs:documentation>A component used to confirm that a system/resource meets the specifications and fulfills its intended purpose</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -104,7 +104,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that provides access to the contents of a resource but intended only for access by humans</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -128,7 +128,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that allows humans to edit the contents of a resource</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -136,7 +136,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that is used in training models for machine learning</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -144,7 +144,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that is used in predicting based on machine learning models</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -152,7 +152,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that is used for extracting features</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -160,7 +160,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that performs data splitting for cross validation purposes</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -168,7 +168,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that supports data merging from various sources</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -176,7 +176,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that performs conversion between formats of a resource</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -184,7 +184,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that is used in the evaluation of the performance of a component</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -192,7 +192,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that supports controlling flows</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -200,7 +200,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that performs analysis tasks based on a script</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -208,7 +208,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that allows matching (mapping) of elements</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -224,7 +224,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that supports crowd sourcing operations</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -232,7 +232,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that collects (retrieves) data from various sources</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>supportTool</xs:broader>
+												<xs:broader>supportComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
