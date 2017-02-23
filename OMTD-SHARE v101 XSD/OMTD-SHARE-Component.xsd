@@ -55,7 +55,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that reads content of various types (pdf, txt, xml etc.)</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>accessTool</xs:broader>
+												<xs:broader>accessComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
@@ -63,7 +63,7 @@
 										<xs:annotation>
 											<xs:documentation>A component that writes processing results in various formats</xs:documentation>
 											<xs:appinfo>
-												<xs:broader>accessTool</xs:broader>
+												<xs:broader>accessComponent</xs:broader>
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
