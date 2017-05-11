@@ -6,12 +6,12 @@
 	<xs:complexType name="textFormatInfoType">
 		<xs:annotation/>
 		<xs:sequence>
-			<xs:element ref="ms:mimeType">
+			<xs:element ref="ms:dataFormatInfo">
 				<xs:annotation>
-					<xs:documentation>The mime-type of the resource which is a formalized specifier for the format included or a mime-type that the tool/service accepts, in conformance with the values of the IANA (Internet Assigned Numbers Authority); you can select one of the pre-defined values or add a value, PREFERABLY FROM THE IANA MEDIA MIMETYPE RECOMMENDED VALUES (http://www.iana.org/assignments/media-types/media-types.xhtml)</xs:documentation>
 					<xs:appinfo>
 						<relation>one-to-one</relation>
-						<label>Mime type</label>
+						<usage-ugc>To be created automatically by the system using the dataFormat of the publications; the element is to be repeated for each different dataFormat, if applicable</usage-ugc>
+						<change-ugc>false</change-ugc>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -140,7 +140,7 @@
 		<xs:annotation>
 			<xs:documentation>Groups information on the encoding of the structure of the contents of the corpus</xs:documentation>
 			<xs:appinfo>
-				<label>Text format</label>
+				<label>Structural encoding</label>
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>

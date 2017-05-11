@@ -91,6 +91,8 @@
 								<xs:appinfo>
 									<label>Description</label>
 									<label-plural>Descriptions</label-plural>
+									<usage-ugc>A corpus generated automatically by [user name] on [creation date] via OpenMinTeD services. The corpus includes [number of] publications from [Source] (in ([language]) and [domain]).</usage-ugc>
+									<change>true</change>
 									<exactMatch>dct:description</exactMatch>
 									<closeMatch>http://hdl.handle.net/11459/CCR_C-2520_9eeedfb4-47d3-ddee-cfcb-99ac634bf1db (ccr:descriptionContext)</closeMatch>
 									<closeMatch>datacite:description descriptionType="Abstract"</closeMatch>
@@ -152,6 +154,7 @@
 									<label>Identifier</label>
 									<label-plural>Identifiers</label-plural>
 									<usage-components>prefill with Maven coordinates if known</usage-components>
+									<usage-ugc>To be created automatically by the system</usage-ugc>
 									<broadMatch>dct:identifier</broadMatch>
 									<!-- we allow for all possible identifiers and not only persistent ones as in CCR -->
 									<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
@@ -169,6 +172,7 @@
 					<xs:documentation>Declares whether the resource is meant for private use or can be publicly available through the registry</xs:documentation>
 					<xs:appinfo>
 						<label>public</label>
+						<change>true</change>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -538,6 +542,7 @@
 									<label>Resource creator</label>
 									<label-plural>Resource creators</label-plural>
 									<recommended>true</recommended>
+									<usage-ugc>To be completed automatically by the system with the details of the user in the relatedPerson</usage-ugc>
 									<exactMatch>dct:creator</exactMatch>
 									<exactMatch>dataCite:creator</exactMatch>
 									<closeMatch>http://hdl.handle.net/11459/CCR_C-2512_e8061b33-c5f3-7f6c-184d-a4311549ba92 (ccr:creatorFullName)</closeMatch>
@@ -570,6 +575,7 @@
 					<xs:documentation>The date of creation of the resource, expressed as a range between starting and end date or exact date</xs:documentation>
 					<xs:appinfo>
 						<label>Creation date</label>
+						<usage-ugc>To be completed automatically by the system with the date that the user submitted the query</usage-ugc>
 						<exactMatch>dct:created</exactMatch>
 						<exactMatch>dataCite:date dateType="created"</exactMatch>
 						<exactMatch>http://hdl.handle.net/11459/CCR_C-2510_2402e609-046a-dfbf-c2d7-5a2f1ae6dc86 (ccr:creationDate)</exactMatch>
@@ -676,7 +682,14 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="onLineHelpURL" type="ms:httpURI" minOccurs="0"/>
+			<xs:element name="onLineHelpURL" type="ms:httpURI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>URL link to an online manual or help pages</xs:documentation>
+					<xs:appinfo>
+						<label>On line help URL</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="samplesLocations" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
@@ -721,7 +734,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="ms:dataFormat" minOccurs="0"/>
+			<xs:element ref="ms:dataFormatInfo" minOccurs="0"/>
 			<xs:element ref="ms:typesystem" minOccurs="0"/>
 			<xs:element ref="ms:annotationResource" minOccurs="0">
 				<xs:annotation>
@@ -982,9 +995,33 @@
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:maxLength value="20"/>
-						<xs:enumeration value="monolingual"/>
-						<xs:enumeration value="bilingual"/>
-						<xs:enumeration value="multilingual"/>
+						<xs:enumeration value="monolingual">
+							<xs:annotation>
+								<xs:documentation>For resource with or covering only one language</xs:documentation>
+								<xs:appinfo>
+									<label>Linguality type</label>
+									<usage>To be automatically calculated if languageInfo=1</usage>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="bilingual">
+							<xs:annotation>
+								<xs:documentation>For resource with or covering two languages</xs:documentation>
+								<xs:appinfo>
+									<label>Linguality type</label>
+									<usage>To be automatically calculated if languageInfo=2</usage>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="multilingual">
+							<xs:annotation>
+								<xs:documentation>For resource with or covering three or more languages</xs:documentation>
+								<xs:appinfo>
+									<label>Linguality type</label>
+									<usage>To be automatically calculated if languageInfo is more than 2</usage>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -993,6 +1030,7 @@
 					<xs:documentation>Indicates whether the corpus is parallel, comparable or mixed</xs:documentation>
 					<xs:appinfo>
 						<label>Multilinguality type</label>
+						<usage>Recommended only if lingualityType=bilingual or multilingual</usage>
 					</xs:appinfo>
 				</xs:annotation>
 				<xs:simpleType>
@@ -1130,56 +1168,267 @@
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:maxLength value="30"/>
-						<xs:enumeration value="terms"/>
-						<xs:enumeration value="entries"/>
-						<xs:enumeration value="turns"/>
-						<xs:enumeration value="utterances"/>
-						<xs:enumeration value="articles"/>
-						<xs:enumeration value="files"/>
-						<xs:enumeration value="items"/>
-						<xs:enumeration value="seconds"/>
-						<xs:enumeration value="elements"/>
-						<xs:enumeration value="units"/>
-						<xs:enumeration value="minutes"/>
-						<xs:enumeration value="hours"/>
-						<xs:enumeration value="texts"/>
-						<xs:enumeration value="sentences"/>
-						<xs:enumeration value="bytes"/>
-						<xs:enumeration value="tokens"/>
-						<xs:enumeration value="words"/>
-						<xs:enumeration value="keywords"/>
-						<xs:enumeration value="idiomaticExpressions"/>
-						<xs:enumeration value="triples"/>
-						<xs:enumeration value="neologisms"/>
-						<xs:enumeration value="multiWordUnits"/>
-						<xs:enumeration value="expressions"/>
-						<xs:enumeration value="synsets"/>
-						<xs:enumeration value="classes"/>
-						<xs:enumeration value="concepts"/>
-						<xs:enumeration value="lexicalTypes"/>
-						<xs:enumeration value="phoneticUnits"/>
-						<xs:enumeration value="syntacticUnits"/>
-						<xs:enumeration value="semanticUnits"/>
-						<xs:enumeration value="predicates"/>
+						<xs:enumeration value="terms">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>terms</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="entries">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>entries</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="articles">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>articles</label>
+									<usage>show only for corpus</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="files">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>files</label>
+									<usage>show only for corpus, components</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="items">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>items</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="elements">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>elements</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="units">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>units</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="texts">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>texts</label>
+									<usage>show only for corpus</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="sentences">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>sentences</label>
+									<usage>show only for corpus, text</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="bytes">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>bytes</label>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="tokens">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>tokens</label>
+									<usage>show only for corpus, publication</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="words">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>words</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="keywords">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>keywords</label>
+									<usage>show only for corpus, publication</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="idiomaticExpressions">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>idiomatic expressions</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="triples">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>triples</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="neologisms">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>neologisms</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="multiWordUnits">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>multi-word units</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="expressions">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>expressions</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="synsets">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>synsets</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="classes">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>classes</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="concepts">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>concepts</label>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="lexicalTypes">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>lexical types</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="phoneticUnits">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>phonetic units</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="morphologicalUnits">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>morphological units</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="syntacticUnits">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>syntactic units</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="semanticUnits">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>semantic units</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="predicates">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>predicates</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<!--
 						<xs:enumeration value="phonemes"/>
 						<xs:enumeration value="diphones"/>
 						<xs:enumeration value="T-HPairs"/>
-						<xs:enumeration value="syllables"/>
-						<xs:enumeration value="frames"/>
-						<xs:enumeration value="images"/>
-						<xs:enumeration value="kb"/>
-						<xs:enumeration value="mb"/>
-						<xs:enumeration value="gb"/>
-						<xs:enumeration value="rb"/>
-						<xs:enumeration value="shots"/>
-						<xs:enumeration value="unigrams"/>
-						<xs:enumeration value="bigrams"/>
-						<xs:enumeration value="trigrams"/>
-						<xs:enumeration value="4-grams"/>
-						<xs:enumeration value="5-grams"/>
-						<xs:enumeration value="rules"/>
-						<xs:enumeration value="questions"/>
-						<xs:enumeration value="other"/>
+						<xs:enumeration value="syllables"/> -->
+						<xs:enumeration value="frames">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>frames</label>
+									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="kb">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>kiloBytes</label>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="mb">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>megabytes</label>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="gb">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>gigabytes</label>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="tb">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>terabytes</label>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<!--
+						<xs:enumeration value="shots"/> -->
+						<xs:enumeration value="unigrams">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>unigrams</label>
+									<usage>show only for n-gram corpus</usage>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="bigrams">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>bigrams</label>
+									<usage>show only for n-gram corpus</usage>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="trigrams">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>trigrams</label>
+									<usage>show only for n-gram corpus</usage>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="4-grams">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>four-grams</label>
+									<usage>show only for n-gram corpus</usage>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="5-grams">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>five-grams</label>
+									<usage>show only for n-gram corpus</usage>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="rules">
+							<xs:annotation>
+								<xs:appinfo>
+									<label>rules</label>
+									<usage>show only for languageDescription</usage>
+									</xs:appinfo></xs:annotation>
+						</xs:enumeration>
+						<!--
+						<xs:enumeration value="questions"/> -->
+						<xs:enumeration value="other">
+													<xs:annotation>
+								<xs:appinfo>
+									<label>other</label>
+									</xs:appinfo></xs:annotation>
+</xs:enumeration>
+						<!--
+						<xs:enumeration value="turns"/>
+						<xs:enumeration value="utterances"/>
+-->
+						<!--
+						<xs:enumeration value="seconds"/> -->
+						<!--
+						<xs:enumeration value="minutes"/>
+						<xs:enumeration value="hours"/>
+-->
+						<!--
+						<xs:enumeration value="images"/> -->
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -1391,6 +1640,7 @@
 			<xs:appinfo>
 				<label>Contact information</label>
 				<label-plural>Contact information points</label-plural>
+				<usage-ugc>use the contactPerson and add the details of the user</usage-ugc>
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
@@ -2713,26 +2963,187 @@
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="dataFormat">
+	<xs:element name="dataFormatInfo">
 		<xs:annotation>
-			<xs:documentation>Specifies the format that is used since often the mime type will not be sufficient for machine processing; NOTE: normally the format should be represented as a combination of the mimetype (e.g. application/xml) and some name and link to the documentation about the supplementary conventions used (e.g xces, alvisED etc.)</xs:documentation>
+			<xs:documentation>Groups the information for the data format; at least mimetype and, if required, a description and documentation url should be provided</xs:documentation>
 			<xs:appinfo>
-				<label>Data format</label>
+				<label>Data format information</label>
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="ms:mimeType"/>
-				<xs:element name="dataFormatSpecific" minOccurs="0">
+				<xs:element name="dataFormat">
 					<xs:annotation>
-						<xs:documentation>The supplementary level of data format</xs:documentation>
+						<xs:documentation>Specifies the format that is used since often the mime type will not be sufficient for machine processing; NOTE: normally the format should be represented as a combination of the mimetype (e.g. application/xml) and some name and link to the documentation about the supplementary conventions used (e.g xces, alvisED etc.)</xs:documentation>
 						<xs:appinfo>
-							<xs:label>Data Format Specific</xs:label>
+							<xs:label>Data format</xs:label>
+							<usage-ugc>Automatically filled in with the dataFormat of the publications</usage-ugc>
 						</xs:appinfo>
 					</xs:annotation>
 					<xs:simpleType>
 						<xs:restriction base="xs:string">
 							<xs:maxLength value="100"/>
+							<xs:enumeration value="text/plain">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>Plain text</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/vnd.xmi+xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>XMI</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="text/xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>XML</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/x-xces+xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>XCES</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/tei+xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>TEI</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/rdf+xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>RDF</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/xhtml+xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>XHTML</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/emma+xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>EMMA</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/pls+xml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>PLS</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/postscript">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>postscript</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="text/sgml">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>SGML</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="text/html">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>HTML</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/x-tex">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>TEX</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/rtf">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>RTF</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/json+ld">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>JSON/LD</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/x-latex">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>LATEX</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="text/csv">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>CSV (Comma Separated Values)</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="text/tab-separated-values">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>TSV (Tab Separated Values)</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/pdf">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>PDF</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/x-msaccess">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>MS-Access database</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/msword">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>MS-Word</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="application/vnd.ms-excel">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>MS-Excel</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="text/turtle">
+								<xs:annotation>
+									<xs:appinfo>
+										<label>Turtle</label>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:enumeration>
 							<xs:enumeration value="aclAnthology">
 								<xs:annotation>
 									<xs:appinfo>
@@ -2988,6 +3399,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
+				<xs:element ref="ms:mimeType" minOccurs="0"/>
 				<xs:element name="fileExtension" type="xs:string" minOccurs="0"/>
 				<xs:element name="dataFormatDescription" type="xs:string" minOccurs="0"/>
 				<xs:element name="documentationURL" type="xs:anyURI" minOccurs="0">
@@ -3006,7 +3418,6 @@
 			<xs:documentation>The mime-type of the resource which is a formalized specifier for the format included or a mime-type that the tool/service accepts, in conformance with the values of the IANA (Internet Assigned Numbers Authority); you can select one of the pre-defined values or add a value, PREFERABLY FROM THE IANA MEDIA MIMETYPE RECOMMENDED VALUES (http://www.iana.org/assignments/media-types/media-types.xhtml)</xs:documentation>
 			<xs:appinfo>
 				<label>Mime type</label>
-				<usage>From values, show only those that start with text or application</usage>
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:simpleType>
@@ -3030,13 +3441,6 @@
 					<xs:annotation>
 						<xs:appinfo>
 							<label>XML</label>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:enumeration>
-				<xs:enumeration value="application/x-tmx+xml">
-					<xs:annotation>
-						<xs:appinfo>
-							<label>TMX</label>
 						</xs:appinfo>
 					</xs:annotation>
 				</xs:enumeration>
@@ -3086,13 +3490,6 @@
 					<xs:annotation>
 						<xs:appinfo>
 							<label>postscript</label>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:enumeration>
-				<xs:enumeration value="application/voicexml+xml">
-					<xs:annotation>
-						<xs:appinfo>
-							<label>VoiceXML</label>
 						</xs:appinfo>
 					</xs:annotation>
 				</xs:enumeration>
@@ -3166,6 +3563,53 @@
 						</xs:appinfo>
 					</xs:annotation>
 				</xs:enumeration>
+				<xs:enumeration value="application/msword">
+					<xs:annotation>
+						<xs:appinfo>
+							<label>MS-Word</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="application/vnd.ms-excel">
+					<xs:annotation>
+						<xs:appinfo>
+							<label>MS-Excel</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="text/turtle">
+					<xs:annotation>
+						<xs:appinfo>
+							<label>Turtle</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="other">
+					<xs:annotation>
+						<xs:appinfo>
+							<label>other</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<!--
+				<xs:enumeration value="application/x-tmx+xml">
+					<xs:annotation>
+						<xs:appinfo>
+							<label>TMX</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+-->
+				<!--
+				<xs:enumeration value="application/voicexml+xml">
+					<xs:annotation>
+						<xs:appinfo>
+							<label>VoiceXML</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+-->
+				<!--
 				<xs:enumeration value="audio/mp4">
 					<xs:annotation>
 						<xs:appinfo>
@@ -3271,20 +3715,8 @@
 						</xs:appinfo>
 					</xs:annotation>
 				</xs:enumeration>
-				<xs:enumeration value="application/msword">
-					<xs:annotation>
-						<xs:appinfo>
-							<label>MS-Word</label>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:enumeration>
-				<xs:enumeration value="application/vnd.ms-excel">
-					<xs:annotation>
-						<xs:appinfo>
-							<label>MS-Excel</label>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:enumeration>
+-->
+				<!--
 				<xs:enumeration value="audio/mpeg3">
 					<xs:annotation>
 						<xs:appinfo>
@@ -3292,25 +3724,14 @@
 						</xs:appinfo>
 					</xs:annotation>
 				</xs:enumeration>
-				<xs:enumeration value="text/turtle">
-					<xs:annotation>
-						<xs:appinfo>
-							<label>Turtle</label>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:enumeration>
-				<xs:enumeration value="other">
-					<xs:annotation>
-						<xs:appinfo>
-							<label>other</label>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:enumeration>
+-->
+				<!--
 				<xs:enumeration value="audio/PCMA"/>
 				<xs:enumeration value="audio/flac"/>
 				<xs:enumeration value="audio/speex"/>
 				<xs:enumeration value="audio/vorbis"/>
 				<xs:enumeration value="video/mp2t"/>
+-->
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>

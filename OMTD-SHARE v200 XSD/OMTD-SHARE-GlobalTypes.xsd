@@ -2,6 +2,7 @@
 <xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-ISOVocabularies.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-Actors.xsd"/>
+	<xs:include schemaLocation="./OMTD-SHARE-Distributions.xsd"/>
 	<!-- definition of global simple types -->
 	<xs:simpleType name="httpURI">
 		<xs:annotation>
@@ -1356,6 +1357,7 @@
 		</xs:choice>
 	</xs:complexType>
 -->
+	<!-- from relatedJournal; deprecated 
 	<xs:complexType name="journalInfoType">
 		<xs:annotation>
 			<xs:documentation>Base type for related journals; journal titles and identifiers</xs:documentation>
@@ -1396,6 +1398,77 @@
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+-->
+	<xs:complexType name="journalInfoType">
+		<xs:annotation>
+			<xs:documentation>Base type for journals</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="journalTitles">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="journalTitle" minOccurs="1" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The full name of the journal</xs:documentation>
+								<xs:appinfo>
+									<label>Journal title</label>
+									<sameAs>dct:title</sameAs>
+									<sameAs>http://hdl.handle.net/11459/CCR_C-2545_d873f2ab-2a2f-29d6-a9ab-260cde57f227 (ccr:resourceTitle)</sameAs>
+									<sameAs>datacite:title</sameAs>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="ms:myString">
+										<xs:maxLength value="500"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+							<xs:unique name="uniqueLang222">
+								<xs:selector xpath="."/>
+								<xs:field xpath="@lang"/>
+							</xs:unique>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="identifiers" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:journalIdentifier" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<recommended>true</recommended>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="ms:publisher" minOccurs="0"/>
+			<xs:element name="languages" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="journalLanguage" type="ms:languageType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="subjects" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:subject" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="rights" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:rightsInfo" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -1507,7 +1580,6 @@
 				</xs:simpleType>
 			</xs:element>
 		</xs:choice>
-		<!-- I have deliberately left here only publication identifiers & unstructured documents; the metadata for publications include mandatory elements for TDM purposes for now -->
 	</xs:complexType>
 	<!-- definition of metadata header -->
 	<xs:complexType name="metadataHeaderInfoType">
@@ -1543,6 +1615,7 @@
 									<relation>many-to-many</relation>
 									<label>Metadata creator</label>
 									<usage>Until the user authentication system is integrated, use "John Foufoutos" as the default value</usage>
+									<usage_ugc>when the authentication system works, use for this the credentials of the person that made the query for creating the corpora</usage_ugc>
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
@@ -1648,6 +1721,8 @@
 					<xs:documentation>The query text that has created the corpus of scholarly publications</xs:documentation>
 					<xs:appinfo>
 						<label>User query</label>
+						<recommended>true</recommended>
+						<usage_ugc>Mandatory; must be filled in with the query used for creating the corpus</usage_ugc>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -1759,6 +1834,8 @@
 				<!--
 				<xs:userTip>For multilingual elements: you can repeat the element for the different language versions using the "lang" attribute to specify the language</xs:userTip>
 -->
+			<usage-ugc>To be created automatically with the following text: "OpenMinTeD subset of [CORE, OpenAIRE, ...] publications"</usage-ugc>
+			<change>true</change>
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:complexType>
@@ -1809,6 +1886,14 @@
 				<closeMatch>http://hdl.handle.net/11459/CCR_C-2573_ae7c2548-8a86-ab6e-7099-e28b7697d1a2 (ccr:persistentIdentifier)</closeMatch>
 				<!-- currently DataCite only supports DOI's -->
 				<narrowMatch>dataCite:identifier</narrowMatch>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="publisher" type="ms:organizationInfoType">
+		<xs:annotation>
+			<xs:documentation>Information about the publisher</xs:documentation>
+			<xs:appinfo>
+				<label>Publisher</label>
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>

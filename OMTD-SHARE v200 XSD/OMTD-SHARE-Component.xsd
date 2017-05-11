@@ -898,6 +898,7 @@
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
+						<xs:enumeration value="data"/>
 						<xs:enumeration value="string">
 							<xs:annotation>
 								<xs:documentation>Value for parameter type, indicating that the parameter takes free text as input</xs:documentation>

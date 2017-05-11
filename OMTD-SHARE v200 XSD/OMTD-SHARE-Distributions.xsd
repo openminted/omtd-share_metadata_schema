@@ -21,11 +21,23 @@
 									<recommended>true</recommended>
 									<relation>one-to-many</relation>
 									<label>Distribution medium</label>
+									<default_publications>downloadable</default_publications>
+									<change_publications>false</change_publications>
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
+			</xs:element>
+			<xs:element name="hashkey" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Specifies the hashkey for indexing and downloading the publication</xs:documentation>
+					<xs:appinfo>
+						<recommended>true</recommended>
+						<relation>one-to-many</relation>
+						<label>Hashkey</label>
+					</xs:appinfo>
+				</xs:annotation>
 			</xs:element>
 			<xs:element name="downloadURLs" minOccurs="0">
 				<xs:complexType>
@@ -72,10 +84,10 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="mimeTypes" minOccurs="0">
+			<xs:element name="dataFormats" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element ref="ms:mimeType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="ms:dataFormatInfo" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -232,7 +244,7 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<!-- not needed for components; for Maven/Docker, we get them from the identifier 
+			<!-- although from components with Maven/Docker, we get them from the identifier, I prefer to keep it here and duplicate it, because the semantics are different -->
 			<xs:element name="downloadURLs" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
@@ -249,7 +261,6 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
--->
 			<xs:element ref="ms:accessURL" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>A landing page, feed, SPARQL endpoint etc. that gives access to the resource or where the web service/workflow is executed</xs:documentation>
@@ -510,43 +521,36 @@
 									<recommended>true</recommended>
 									<relation>one-to-many</relation>
 									<label>Distribution medium</label>
+									<default-ugc>downloadable</default-ugc>
+									<change-ugc>false</change-ugc>
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="downloadURLs" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element ref="ms:downloadURL" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Any url where the resource can be downloaded from; please, use if the resource is "downloadable" and you have not uploaded the resource in the repository</xs:documentation>
-								<xs:appinfo>
-									<relation>one-to-many</relation>
-									<label>Download URL</label>
-									<sameAs>dcat:downloadURL</sameAs>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
+			<xs:element ref="ms:downloadURL" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Any url where the resource can be downloaded from; please, use if the resource is "downloadable" and you have not uploaded the resource in the repository</xs:documentation>
+					<xs:appinfo>
+						<relation>one-to-many</relation>
+						<label>Download URL</label>
+						<sameAs>dcat:downloadURL</sameAs>
+						<usage>Mandatory if distributionMedium=downloadable</usage>
+						<usage-ugc>To be created automatically by system with the URL from where the corpus can be downloaded when made publicly available</usage-ugc>
+					</xs:appinfo>
+				</xs:annotation>
 			</xs:element>
-			<xs:element name="accessURLs" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element ref="ms:accessURL" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>A landing page, feed, SPARQL endpoint etc. that gives access to the resource or where the web service/workflow is executed; please use for resources that are "accessibleThroughInterface" or "webExecutable"</xs:documentation>
-								<xs:appinfo>
-									<relation>one-to-many</relation>
-									<label>Access URL</label>
-									<closeMatch>dcat:accessURL</closeMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
+			<xs:element ref="ms:accessURL" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A landing page, feed, SPARQL endpoint etc. that gives access to the resource or where the web service/workflow is executed; please use for resources that are "accessibleThroughInterface" or "webExecutable"</xs:documentation>
+					<xs:appinfo>
+						<relation>one-to-many</relation>
+						<label>Access URL</label>
+						<closeMatch>dcat:accessURL</closeMatch>
+						<usage>Mandatory if distributionMedium=webExecutable or accessibleThroughInterface</usage>
+					</xs:appinfo>
+				</xs:annotation>
 			</xs:element>
 			<xs:element name="textFormats" minOccurs="0">
 				<xs:complexType>
@@ -565,11 +569,22 @@
 			<xs:element name="sizes" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element ref="ms:sizeInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="ms:sizeInfo" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element ref="ms:rightsInfo"/>
+			<xs:element ref="ms:rightsInfo">
+				<xs:annotation>
+					<xs:appinfo>
+						<usage-ugc>To be automatically created by the system; use the values from the rightsInfo of the publications repeating them if there are multiple licenceInfo or rightsStatementsInfo with different values</usage-ugc>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="copyrightStatements" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
@@ -1320,15 +1335,52 @@
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
 				<xs:maxLength value="30"/>
-				<xs:enumeration value="webExecutable"/>
-				<xs:enumeration value="paperCopy"/>
+				<xs:enumeration value="webExecutable">
+					<xs:annotation>
+						<xs:documentation>For web services</xs:documentation>
+						<xs:appinfo>
+							<label>Web executable</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="downloadable">
+					<xs:annotation>
+						<xs:documentation>For resources that can be downloaded, e.g. for documents that can be downloaded or software tools that can be locally downloaded and run</xs:documentation>
+						<xs:appinfo>
+							<label>Downloadable</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="accessibleThroughInterface">
+					<xs:annotation>
+						<xs:documentation>For resources that can accessed only via an interface, e.g. lexica or corpora through query interfaces</xs:documentation>
+						<xs:appinfo>
+							<label>Acessible through interface</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="other">
+					<xs:annotation>
+						<xs:documentation>Value for distributionMedium; to be used when the desired value is not included in the listed values</xs:documentation>
+						<xs:appinfo>
+							<label>Other</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<!--
+				<xs:enumeration value="paperCopy">
+		<xs:annotation>
+			<xs:documentation>For resources that are available only in paper format</xs:documentation>
+			<xs:appinfo>
+				<label>Paper copy</label>
+			</xs:appinfo>
+		</xs:annotation>
+				</xs:enumeration>
 				<xs:enumeration value="hardDisk"/>
 				<xs:enumeration value="bluRay"/>
 				<xs:enumeration value="DVD-R"/>
 				<xs:enumeration value="CD-ROM"/>
-				<xs:enumeration value="downloadable"/>
-				<xs:enumeration value="accessibleThroughInterface"/>
-				<xs:enumeration value="other"/>
+-->
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
@@ -1339,6 +1391,7 @@
 				<relation>one-to-many</relation>
 				<label>Download URL</label>
 				<sameAs>dcat:downloadURL</sameAs>
+				<usage>Mandatory if distributionMedium=downloadable</usage>
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
@@ -1349,6 +1402,7 @@
 				<relation>one-to-many</relation>
 				<label>Access URL</label>
 				<closeMatch>dcat:accessURL</closeMatch>
+				<usage>Mandatory if distributionMedium=accessibleThroughInterface or webExecutable</usage>
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
