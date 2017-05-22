@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿Type ur fucking name ! (Type ur Company -.-) -->
 <xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-ResourceCommon.xsd"/>
@@ -33,16 +33,25 @@
 				</xs:simpleType>
 			</xs:element>
 			<xs:element ref="ms:identificationInfo"/>
-			<xs:element name="application" type="xs:boolean">
+			<xs:element ref="ms:versionInfo"/>
+			<xs:element ref="ms:contactInfo"/>
+			<xs:element name="validationInfos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:validationInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="ms:usageInfo" minOccurs="0"/>
+			<xs:element ref="ms:resourceDocumentationInfo" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Indicates whether the component can be used as an integrated end-user application</xs:documentation>
 					<xs:appinfo>
-						<label>Application</label>
-						<label-plural>Applications</label-plural>
+						<recommended>true</recommended>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="componentType" minOccurs="1" maxOccurs="1">
+			<xs:element ref="ms:resourceCreationInfo" minOccurs="0"/>
+			<xs:element name="componentType">
 				<xs:annotation>
 					<xs:documentation>Specifies the type of a component, in terms of the function/task it performs; please, note that the ontology is under revision</xs:documentation>
 					<xs:appinfo>
@@ -677,19 +686,17 @@
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:enumeration>
-						<!-- removed as it seems a bit strange as a component; in MetaShare used for corpora 
-									<xs:enumeration value="qualitativeAnalyzer">
-										<xs:annotation>
-											<xs:documentation>??</xs:documentation>
-											<xs:appinfo>
-												<xs:broader>analyzer</xs:broader>
-												<label>Qualitative analyzer</label>
-											</xs:appinfo>
-										</xs:annotation>
-									</xs:enumeration>
--->
 					</xs:restriction>
 				</xs:simpleType>
+			</xs:element>
+			<xs:element name="application" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicates whether the component can be used as an integrated end-user application</xs:documentation>
+					<xs:appinfo>
+						<label>Application</label>
+						<label-plural>Applications</label-plural>
+					</xs:appinfo>
+				</xs:annotation>
 			</xs:element>
 			<xs:element name="applicationFunction" type="ms:applicationType" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
@@ -701,7 +708,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="workflow" type="xs:boolean">
+			<xs:element name="workflow" type="xs:boolean" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Indicates whether the component is a workflow, i.e. consists of other components in a linear or branching execution</xs:documentation>
 					<xs:appinfo>
@@ -720,7 +727,6 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="ms:versionInfo"/>
 			<xs:element name="distributionInfos">
 				<xs:complexType>
 					<xs:sequence>
@@ -728,7 +734,6 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element ref="ms:contactInfo"/>
 			<xs:element name="inputContentResourceInfo" type="ms:processingResourceInfoType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Groups together information on the requirements set on the input resource of a component</xs:documentation>
@@ -748,7 +753,20 @@
 			<xs:element name="componentDependencies" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element ref="ms:typesystem"/>
+						<xs:element ref="ms:typesystem" minOccurs="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<recommended>true</recommended>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="annotationSchema" minOccurs="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<recommended>true</recommended>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
 						<xs:element name="annotationResources" minOccurs="0">
 							<xs:complexType>
 								<xs:sequence>
@@ -782,14 +800,6 @@
 			</xs:element>
 -->
 			<xs:element ref="ms:componentCreationInfo">
-				<xs:annotation>
-					<xs:appinfo>
-						<recommended>true</recommended>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="ms:resourceCreationInfo" minOccurs="0"/>
-			<xs:element ref="ms:resourceDocumentationInfo" minOccurs="0">
 				<xs:annotation>
 					<xs:appinfo>
 						<recommended>true</recommended>
@@ -848,11 +858,10 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element ref="ms:usageInfo" minOccurs="0"/>
-			<xs:element name="validationInfos" minOccurs="0">
+			<xs:element name="relations" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element ref="ms:validationInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="ms:relationInfo" minOccurs="0"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -1051,7 +1060,7 @@
 			<xs:element name="dataFormats" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element ref="ms:dataFormat" minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="ms:dataFormatInfo" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:appinfo>
 									<recommended>true</recommended>
@@ -1384,6 +1393,11 @@
 	<xs:complexType name="componentCreationInfoType">
 		<xs:sequence>
 			<xs:element name="framework">
+			<xs:annotation>
+				<xs:documentation>The framework used for developing and deploying the component</xs:documentation>
+				<xs:appinfo>
+					<label>framework</label>
+					</xs:appinfo></xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:enumeration value="UIMA"/>

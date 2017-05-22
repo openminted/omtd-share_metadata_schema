@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
 <xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-ResourceCommon.xsd"/>
@@ -19,7 +20,7 @@
 			</xs:element>
 			<xs:element ref="ms:identificationInfo"/>
 			<xs:element ref="ms:contactInfo" maxOccurs="1"/>
-			<xs:element ref="ms:versionInfo" minOccurs="0"/>
+			<xs:element ref="ms:versionInfo" maxOccurs="1"/>
 			<xs:element name="validationInfos" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
@@ -48,18 +49,102 @@
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:maxLength value="30"/>
+						<xs:enumeration value="mlModel">
+							<xs:annotation>
+								<xs:documentation>Value for languageDescriptionType; to be used for Machine Learning models</xs:documentation>
+								<xs:appinfo>
+									<label>Machine learning model</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
 						<xs:enumeration value="grammar">
 							<xs:annotation>
 								<xs:documentation>Value for languageDescriptionType; to be used for resources describing the morphological, syntactic etc. system (or part therof) of a language</xs:documentation>
+								<xs:appinfo>
+									<label>Grammar</label>
+								</xs:appinfo>
 							</xs:annotation>
 						</xs:enumeration>
-						<xs:enumeration value="other"/>
+						<xs:enumeration value="other">
+							<xs:annotation>
+								<xs:documentation>Value for languageDescriptionType; to be used when the desired value is not included in the listed values</xs:documentation>
+								<xs:appinfo>
+									<label>Other</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
 					</xs:restriction>
 				</xs:simpleType>
+			</xs:element>
+			<xs:element name="modelOperationInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Information provided for the description of Machine Learning models</xs:documentation>
+					<xs:appinfo>
+						<usage>Mandatory if resourceType=mlModel</usage>
+						<label>Information on machine learning models</label>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="variant" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>variant name used for the model</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Variant name</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="ms:typesystem" minOccurs="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<recommended>true</recommended>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="annotationSchema" type="ms:relatedResourceType" minOccurs="0"/>
+						<xs:element name="algorithm" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Training algorithm used for the model (e.g. maximum entropy, svm etc.)</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Algorithm</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="algorithmDetails" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Detailed description of the algorithm, incl. info on whether it's supervised or not</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Algorithm details</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="trainingCorpusDetails" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Detailed description of the training corpus (e.g. size, number of features etc.)</xs:documentation>
+								<xs:appinfo>
+									<xs:label>Training corpus details</xs:label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
 			</xs:element>
 			<xs:element ref="ms:languageDescriptionEncodingInfo" minOccurs="0"/>
 			<xs:element ref="ms:languageDescriptionOperationInfo" minOccurs="0"/>
 			<xs:element ref="ms:languageDescriptionPerformanceInfo" minOccurs="0"/>
+			<xs:element name="relations" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:relationInfo" minOccurs="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<usage>Mandatory if languageDescriptionType=mlModel</usage>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="languageDescriptionMediaType">
 				<xs:annotation>
 					<xs:documentation>Groups information on the media type-specific components for language descriptions</xs:documentation>
@@ -325,14 +410,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="modalities" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element ref="ms:modalityInfo" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="sizes">
+			<xs:element name="sizes" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element ref="ms:sizeInfo" maxOccurs="unbounded"/>

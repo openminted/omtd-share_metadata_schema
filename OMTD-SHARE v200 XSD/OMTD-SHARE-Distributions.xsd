@@ -1196,15 +1196,6 @@
 						</xs:appinfo>
 					</xs:annotation>
 				</xs:enumeration>
-				<xs:enumeration value="embargoedAccess">
-					<xs:annotation>
-						<xs:documentation>The resource is with Closed Access, until released for Open Access on a certain date, which can be specified elsewhere in the metadata.</xs:documentation>
-						<xs:appinfo>
-							<label>Embargoed Access</label>
-							<closeMatch>info:eu-repo/semantics/embargoedAccess</closeMatch>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:enumeration>
 				<xs:enumeration value="restrictedAccess">
 					<xs:annotation>
 						<xs:documentation>Access is subject to restrictions or controls regarding users (e.g. limited to researchers or members of a specific group) or use (e.g. for research only, noncommercial use etc.); subscription or registration may also be required and access may incur financial costs.</xs:documentation>
@@ -1215,6 +1206,17 @@
 						</xs:appinfo>
 					</xs:annotation>
 				</xs:enumeration>
+				<!--
+				<xs:enumeration value="embargoedAccess">
+					<xs:annotation>
+						<xs:documentation>The resource is with Closed Access, until released for Open Access on a certain date, which can be specified elsewhere in the metadata.</xs:documentation>
+						<xs:appinfo>
+							<label>Embargoed Access</label>
+							<closeMatch>info:eu-repo/semantics/embargoedAccess</closeMatch>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+-->
 				<!-- not sufficiently different from restrictedAccess
 				<xs:enumeration value="closedAccess">
 					<xs:annotation>

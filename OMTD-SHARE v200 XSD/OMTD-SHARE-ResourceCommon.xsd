@@ -265,25 +265,44 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="version">
-				<xs:annotation>
-					<xs:documentation>Associates a resource with a numeric pattern of the form major_version.minor_version.patch (in accordance to the semantic versioning guidelines, cf. http://semver.org) that identifies its version</xs:documentation>
-					<xs:appinfo>
-						<label>Version</label>
-						<label-plural>Versions</label-plural>
-						<default>1.0.0</default>
-						<change>true</change>
-						<exactMatch>dataCite:version</exactMatch>
-						<closeMatch>http://hdl.handle.net/11459/CCR_C-2547_7883d382-b3ce-8ab4-7052-0138525a8ba1 (ccr:version)</closeMatch>
-					</xs:appinfo>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:maxLength value="100"/>
-						<xs:pattern value="[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
+			<xs:choice>
+				<xs:element name="version">
+					<xs:annotation>
+						<xs:documentation>Associates a resource with a numeric pattern of the form major_version.minor_version.patch (in accordance to the semantic versioning guidelines, cf. http://semver.org) that identifies its version</xs:documentation>
+						<xs:appinfo>
+							<label>Version</label>
+							<label-plural>Versions</label-plural>
+							<default>1.0.0</default>
+							<change>true</change>
+							<exactMatch>dataCite:version</exactMatch>
+							<closeMatch>http://hdl.handle.net/11459/CCR_C-2547_7883d382-b3ce-8ab4-7052-0138525a8ba1 (ccr:version)</closeMatch>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="100"/>
+							<xs:pattern value="[0-9]{1,2}(\.[0-9]{1,2}(\.[0-9]{1,3}))"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="versionDate">
+					<xs:annotation>
+						<xs:documentation>Associates a resource with the last modification date (or creation date if it hasn't been modified); the preferred format is YYYYMMDD</xs:documentation>
+						<xs:appinfo>
+							<label>Version</label>
+							<label-plural>Versions</label-plural>
+							<exactMatch>dataCite:version</exactMatch>
+							<closeMatch>http://hdl.handle.net/11459/CCR_C-2547_7883d382-b3ce-8ab4-7052-0138525a8ba1 (ccr:version)</closeMatch>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="100"/>
+							<xs:pattern value="[0-9]{8}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:choice>
 			<xs:element name="versionType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>A type of versioning vocabulary used mainly for works (e.g. scholarly articles, books etc.) that go through a formal review process before final publication, marked with major changes across the versions</xs:documentation>
@@ -673,7 +692,6 @@
 								<xs:documentation>Links a resource to publications, research articles, manuals, reports etc. that describe it</xs:documentation>
 								<xs:appinfo>
 									<label>Is documented in</label>
-									<recommended>true</recommended>
 									<!-- openAIRE uses publicationReference dc:relation info:eu-repo/semantics/reference/<scheme>/<identifier> -->
 									<exactMatch>dataCite:isDocumentedBy</exactMatch>
 								</xs:appinfo>
@@ -687,6 +705,7 @@
 					<xs:documentation>URL link to an online manual or help pages</xs:documentation>
 					<xs:appinfo>
 						<label>On line help URL</label>
+						<recommended>true</recommended>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -1172,251 +1191,317 @@
 							<xs:annotation>
 								<xs:appinfo>
 									<label>terms</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="entries">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>entries</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="articles">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>articles</label>
-									<usage>show only for corpus</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="files">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>files</label>
-									<usage>show only for corpus, components</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, components</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="items">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>items</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="elements">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>elements</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="units">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>units</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="texts">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>texts</label>
-									<usage>show only for corpus</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="sentences">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>sentences</label>
-									<usage>show only for corpus, text</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, text</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="bytes">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>bytes</label>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="tokens">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>tokens</label>
-									<usage>show only for corpus, publication</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="words">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>words</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="keywords">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>keywords</label>
-									<usage>show only for corpus, publication</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="idiomaticExpressions">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>idiomatic expressions</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="triples">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>triples</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="neologisms">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>neologisms</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="multiWordUnits">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>multi-word units</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="expressions">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>expressions</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="synsets">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>synsets</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="classes">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>classes</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="concepts">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>concepts</label>
-									<usage>show only for corpus, publication, lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for corpus, publication, lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="lexicalTypes">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>lexical types</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="phoneticUnits">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>phonetic units</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="morphologicalUnits">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>morphological units</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="syntacticUnits">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>syntactic units</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="semanticUnits">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>semantic units</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="predicates">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>predicates</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
-						<!--
-						<xs:enumeration value="phonemes"/>
-						<xs:enumeration value="diphones"/>
-						<xs:enumeration value="T-HPairs"/>
-						<xs:enumeration value="syllables"/> -->
 						<xs:enumeration value="frames">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>frames</label>
-									<usage>show only for lexicalConceptualResource</usage></xs:appinfo></xs:annotation>
+									<usage>show only for lexicalConceptualResource</usage>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="kb">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>kiloBytes</label>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="mb">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>megabytes</label>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="gb">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>gigabytes</label>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="tb">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>terabytes</label>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
-						<!--
-						<xs:enumeration value="shots"/> -->
 						<xs:enumeration value="unigrams">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>unigrams</label>
 									<usage>show only for n-gram corpus</usage>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="bigrams">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>bigrams</label>
 									<usage>show only for n-gram corpus</usage>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="trigrams">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>trigrams</label>
 									<usage>show only for n-gram corpus</usage>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="4-grams">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>four-grams</label>
 									<usage>show only for n-gram corpus</usage>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="5-grams">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>five-grams</label>
 									<usage>show only for n-gram corpus</usage>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
 						<xs:enumeration value="rules">
 							<xs:annotation>
 								<xs:appinfo>
 									<label>rules</label>
 									<usage>show only for languageDescription</usage>
-									</xs:appinfo></xs:annotation>
+								</xs:appinfo>
+							</xs:annotation>
 						</xs:enumeration>
-						<!--
-						<xs:enumeration value="questions"/> -->
 						<xs:enumeration value="other">
-													<xs:annotation>
+							<xs:annotation>
 								<xs:appinfo>
 									<label>other</label>
-									</xs:appinfo></xs:annotation>
-</xs:enumeration>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<!--
+						<xs:enumeration value="phonemes"/>
+						<xs:enumeration value="diphones"/>
+						<xs:enumeration value="T-HPairs"/>
+						<xs:enumeration value="syllables"/> -->
+						<!--
+						<xs:enumeration value="shots"/> -->
+						<!--
+						<xs:enumeration value="questions"/> -->
 						<!--
 						<xs:enumeration value="turns"/>
 						<xs:enumeration value="utterances"/>
@@ -1598,6 +1683,81 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="relationInfoType">
+		<xs:sequence>
+			<xs:element name="relationType">
+				<xs:annotation>
+					<xs:documentation>Specifies the type of relation holding between two entities (e.g. two resources that comprise one new resource together, a corpus and the s/w component that has been used for its creation or a corpus and the publication that describes it</xs:documentation>
+					<xs:appinfo>
+						<label>Relation type</label>
+						<exactMatch>dataCite relation relationType</exactMatch>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="isPartOf"/>
+						<xs:enumeration value="isPartWith"/>
+						<xs:enumeration value="hasPart"/>
+						<xs:enumeration value="hasOutcome"/>
+						<xs:enumeration value="isCombinedWith"/>
+						<xs:enumeration value="requiresLR"/>
+						<xs:enumeration value="requiresSoftware"/>
+						<xs:enumeration value="isExactMatch"/>
+						<xs:enumeration value="isSimilarTo"/>
+						<xs:enumeration value="isContinuationOf"/>
+						<xs:enumeration value="isVersionOf"/>
+						<xs:enumeration value="isSimilarTo"/>
+						<xs:enumeration value="replaces"/>
+						<xs:enumeration value="isReplacedWith"/>
+						<xs:enumeration value="isCreatedBy"/>
+						<xs:enumeration value="isElicitedBy"/>
+						<xs:enumeration value="isRecordedBy"/>
+						<xs:enumeration value="isEditedBy"/>
+						<xs:enumeration value="isAnalysedBy"/>
+						<xs:enumeration value="isEvaluatedBy"/>
+						<xs:enumeration value="isQueriedBy"/>
+						<xs:enumeration value="isAccessedBy"/>
+						<xs:enumeration value="isArchivedBy"/>
+						<xs:enumeration value="isDisplayedBy"/>
+						<xs:enumeration value="isCompatibleWith"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="relatedResource" type="ms:relatedResourceType">
+				<xs:annotation>
+					<xs:documentation>Reference to a resource participating in a relation; the preferred form of reference is a unique identifier, otherwise the resource name</xs:documentation>
+					<xs:appinfo>
+						<label>Related resource</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<!--
+			<xs:element name="relatedResources">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="relatedResource2" type="ms:relatedResourceType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Reference to a resource participating in a relation; the preferred form of reference is a unique identifier, otherwise the resource name</xs:documentation>
+								<xs:appinfo>
+									<label>Related resource</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+-->
+		</xs:sequence>
+	</xs:complexType>
+	<!-- definition of elements -->
+	<xs:element name="relationInfo" type="ms:relationInfoType">
+		<xs:annotation>
+			<xs:documentation>Groups together information on relations between resources</xs:documentation>
+			<xs:appinfo>
+				<label>Annotations</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="usageInfo" type="ms:usageInfoType">
 		<xs:annotation>
 			<xs:documentation>Groups information on usage of the resource (both intended use and cases where it has already been used)</xs:documentation>
@@ -2126,24 +2286,10 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:maxLength value="100"/>
-			<xs:enumeration value="alignment">
-				<xs:annotation>
-					<xs:appinfo>
-						<label>alignment</label>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="annotation">
 				<xs:annotation>
 					<xs:appinfo>
 						<label>annotation</label>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="avatarSynthesis">
-				<xs:annotation>
-					<xs:appinfo>
-						<label>avatar synthesis</label>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
@@ -2308,13 +2454,6 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="linguisticResearch">
-				<xs:annotation>
-					<xs:appinfo>
-						<label>linguistic research</label>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="machineTranslation">
 				<xs:annotation>
 					<xs:appinfo>
@@ -2378,13 +2517,6 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="phraseAlignment">
-				<xs:annotation>
-					<xs:appinfo>
-						<label>phrase alignment</label>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="qualitativeAnalysis">
 				<xs:annotation>
 					<xs:appinfo>
@@ -2403,13 +2535,6 @@
 				<xs:annotation>
 					<xs:appinfo>
 						<label>Semantic Role Labelling</label>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="sentenceAlignment">
-				<xs:annotation>
-					<xs:appinfo>
-						<label>sentence alignment</label>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
@@ -2480,13 +2605,6 @@
 				<xs:annotation>
 					<xs:appinfo>
 						<label>topic detection tracking</label>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="wordAlignment">
-				<xs:annotation>
-					<xs:appinfo>
-						<label>word alignment</label>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
@@ -2997,7 +3115,7 @@
 									</xs:appinfo>
 								</xs:annotation>
 							</xs:enumeration>
-							<xs:enumeration value="text/xml">
+							<xs:enumeration value="application/xml">
 								<xs:annotation>
 									<xs:appinfo>
 										<label>XML</label>

@@ -63,10 +63,16 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="projectIdentifiers">
+			<xs:element name="projectIdentifiers" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element ref="ms:projectIdentifier" maxOccurs="unbounded"/>
+						<xs:element ref="ms:projectIdentifier" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<recommended>true</recommended>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -79,6 +85,24 @@
 								<xs:appinfo>
 									<relation>one-to-many</relation>
 									<label>Webpage</label>
+									<recommended>true</recommended>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="funders">
+				<xs:complexType>
+					<xs:sequence>
+						<!-- CHECK where can we say something about the nature of the funder? -->
+						<xs:element name="funder" type="ms:organizationInfoType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Funder of the project (e.g. EC for European Commission); preferred format is the registration through fundref</xs:documentation>
+								<xs:appinfo>
+									<recommended>true</recommended>
+									<relation>one-to-many</relation>
+									<label>Funder</label>
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
@@ -121,23 +145,6 @@
 									</xs:enumeration>
 								</xs:restriction>
 							</xs:simpleType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="funders" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<!-- CHECK where can we say something about the nature of the funder? -->
-						<xs:element name="funder" type="ms:organizationInfoType" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Funder of the project (e.g. EC for European Commission); preferred format is the registration through fundref</xs:documentation>
-								<xs:appinfo>
-									<recommended>true</recommended>
-									<relation>one-to-many</relation>
-									<label>Funder</label>
-								</xs:appinfo>
-							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
