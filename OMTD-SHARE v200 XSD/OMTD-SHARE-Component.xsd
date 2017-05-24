@@ -698,7 +698,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="applicationFunction" type="ms:applicationType" minOccurs="0" maxOccurs="1">
+			<xs:element name="applicationFunction" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>Specifies the type of an end-user application, in terms of the function/task it performs</xs:documentation>
 					<xs:appinfo>
@@ -1393,11 +1393,12 @@
 	<xs:complexType name="componentCreationInfoType">
 		<xs:sequence>
 			<xs:element name="framework">
-			<xs:annotation>
-				<xs:documentation>The framework used for developing and deploying the component</xs:documentation>
-				<xs:appinfo>
-					<label>framework</label>
-					</xs:appinfo></xs:annotation>
+				<xs:annotation>
+					<xs:documentation>The framework used for developing and deploying the component</xs:documentation>
+					<xs:appinfo>
+						<label>framework</label>
+					</xs:appinfo>
+				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:enumeration value="UIMA"/>

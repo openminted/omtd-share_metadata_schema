@@ -83,7 +83,7 @@
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:maxLength value="30"/>
-						<xs:enumeration value="jouralArticle">
+						<xs:enumeration value="journalArticle">
 							<xs:annotation>
 								<xs:documentation>An article on a particular topic and published in a journal issue. (adapted from fabio)</xs:documentation>
 								<xs:appinfo>
@@ -788,7 +788,7 @@
 			<xs:element name="relations" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-			<xs:element ref="ms:relationInfo" minOccurs="0"/>
+						<xs:element ref="ms:relationInfo" minOccurs="0"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

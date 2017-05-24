@@ -2370,6 +2370,13 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="extractionOfFundingInformation">
+				<xs:annotation>
+					<xs:appinfo>
+						<label>extraction of funding information</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="intra-documentCoreferenceResolution">
 				<xs:annotation>
 					<xs:appinfo>
@@ -2601,10 +2608,24 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="topicDetection_Tracking">
+			<xs:enumeration value="topicDetection">
 				<xs:annotation>
 					<xs:appinfo>
-						<label>topic detection tracking</label>
+						<label>topic detection</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="topicDetectionAndTracking">
+				<xs:annotation>
+					<xs:appinfo>
+						<label>topic detection and tracking</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="topicModelling">
+				<xs:annotation>
+					<xs:appinfo>
+						<label>topic modelling</label>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:enumeration>
