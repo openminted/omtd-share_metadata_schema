@@ -84,20 +84,15 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="dataFormats" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element ref="ms:dataFormatInfo" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
+			<xs:element ref="ms:dataFormatInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<recommended>true</recommended>
+					</xs:appinfo>
+				</xs:annotation>
 			</xs:element>
-			<xs:element name="characterEncodings" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element ref="ms:characterEncoding" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
+						<xs:element ref="ms:characterEncoding" minOccurs="0" maxOccurs="1">
+						<xs:annotation><xs:appinfo><recommended>true</recommended></xs:appinfo></xs:annotation></xs:element>
 			<xs:element name="sizes" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
