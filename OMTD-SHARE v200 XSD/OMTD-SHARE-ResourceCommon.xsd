@@ -750,11 +750,25 @@
 					<xs:documentation>Indicates whether the annotation is created inline or in a stand-off fashion</xs:documentation>
 					<xs:appinfo>
 						<label>Annotation standoff</label>
+						<recommended>true</recommended>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="ms:dataFormatInfo" minOccurs="0"/>
-			<xs:element ref="ms:typesystem" minOccurs="0"/>
+			<xs:element ref="ms:dataFormatInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<recommended>true</recommended>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ms:typesystem" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<recommended>true</recommended>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="annotationSchema" type="ms:relatedResourceType" minOccurs="0"/>
 			<xs:element ref="ms:annotationResource" minOccurs="0">
 				<xs:annotation>
 					<xs:appinfo>
@@ -777,6 +791,7 @@
 					<xs:documentation>Indicates whether the resource is annotated manually or by automatic processes</xs:documentation>
 					<xs:appinfo>
 						<xs:label>Annotation mode</xs:label>
+						<recommended>true</recommended>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -793,6 +808,7 @@
 					<xs:documentation>The name, the identifier or the url of the tool used for the annotation of the resource</xs:documentation>
 					<xs:appinfo>
 						<label>Annotation tool</label>
+						<recommended>true</recommended>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
@@ -801,6 +817,7 @@
 					<xs:documentation>The dates (either date or range of dates) in which the annotation process has taken place</xs:documentation>
 					<xs:appinfo>
 						<label>Annotation date</label>
+						<recommended>true</recommended>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
