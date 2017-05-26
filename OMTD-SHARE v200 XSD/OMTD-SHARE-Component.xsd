@@ -1631,10 +1631,13 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="ms:baseMetadataRecord">
 			<xs:sequence>
-				<xs:element ref="ms:metadataHeaderInfo"/>
 				<xs:element ref="ms:componentInfo"/>
 			</xs:sequence>
+			</xs:extension>
+			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="componentInfo" type="ms:componentInfoType">

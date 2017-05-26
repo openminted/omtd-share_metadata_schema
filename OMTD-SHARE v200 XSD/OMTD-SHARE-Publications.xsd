@@ -805,24 +805,27 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:complexType>
-		<xs:sequence>
-			<xs:element ref="ms:metadataHeaderInfo"/>
-			<xs:element name="document">
-				<xs:annotation>
-					<xs:documentation>Root element for documents (single files); choice among raw publications and annotated publications</xs:documentation>
-					<xs:appinfo>
-						<label>Document</label>
-					</xs:appinfo>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:choice>
-						<xs:element ref="ms:publication"/>
-						<xs:element ref="ms:annotatedPublication"/>
-					</xs:choice>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="ms:baseMetadataRecord">
+			<xs:sequence>
+				<xs:element name="document">
+					<xs:annotation>
+						<xs:documentation>Root element for documents (single files); choice among raw publications and annotated publications</xs:documentation>
+						<xs:appinfo>
+							<label>Document</label>
+						</xs:appinfo>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:choice>
+							<xs:element ref="ms:publication"/>
+							<xs:element ref="ms:annotatedPublication"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
 	</xs:element>
 	<xs:element name="publication" type="ms:documentInfoType">
 		<xs:annotation>

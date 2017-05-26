@@ -1582,6 +1582,12 @@
 		</xs:choice>
 	</xs:complexType>
 	<!-- definition of metadata header -->
+	<xs:complexType name="baseMetadataRecord">
+		<xs:sequence>
+			<xs:element name="metadataHeaderInfo" type="ms:metadataHeaderInfoType">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="metadataHeaderInfoType">
 		<xs:annotation>
 			<xs:documentation>Base type for metadata header</xs:documentation>
@@ -1834,8 +1840,8 @@
 				<!--
 				<xs:userTip>For multilingual elements: you can repeat the element for the different language versions using the "lang" attribute to specify the language</xs:userTip>
 -->
-			<usage-ugc>To be created automatically with the following text: "OpenMinTeD subset of [CORE, OpenAIRE, ...] publications"</usage-ugc>
-			<change>true</change>
+				<usage-ugc>To be created automatically with the following text: "OpenMinTeD subset of [CORE, OpenAIRE, ...] publications"</usage-ugc>
+				<change>true</change>
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:complexType>
