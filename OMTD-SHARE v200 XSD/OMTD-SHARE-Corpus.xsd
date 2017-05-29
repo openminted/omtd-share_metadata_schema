@@ -343,13 +343,13 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:complexType>
-		<xs:complexContent>
+			<xs:complexContent>
 				<xs:extension base="ms:baseMetadataRecord">
-			<xs:sequence>
-				<xs:element ref="ms:corpusInfo"/>
-			</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+					<xs:sequence>
+						<xs:element ref="ms:corpusInfo"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="corpusInfo" type="ms:corpusInfoType">

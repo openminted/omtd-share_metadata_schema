@@ -38,13 +38,6 @@
 			<xs:element ref="ms:usageInfo" minOccurs="0"/>
 			<xs:element ref="ms:resourceDocumentationInfo" minOccurs="0"/>
 			<xs:element ref="ms:resourceCreationInfo" minOccurs="0"/>
-			<xs:element name="relations" minOccurs="0" maxOccurs="1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element ref="ms:relationInfo" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
 			<xs:element name="lexicalConceptualResourceType">
 				<xs:annotation>
 					<xs:documentation>Specifies the subtype of lexicalConceptualResource</xs:documentation>
@@ -188,6 +181,13 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element ref="ms:lexicalConceptualResourceTextInfo"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="relations" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ms:relationInfo" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -399,10 +399,13 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="ms:metadataHeaderInfo"/>
-				<xs:element ref="ms:lexicalConceptualResourceInfo"/>
-			</xs:sequence>
+			<xs:complexContent>
+				<xs:extension base="ms:baseMetadataRecord">
+					<xs:sequence>
+						<xs:element ref="ms:lexicalConceptualResourceInfo"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="lexicalConceptualResourceInfo" type="ms:lexicalConceptualResourceInfoType">

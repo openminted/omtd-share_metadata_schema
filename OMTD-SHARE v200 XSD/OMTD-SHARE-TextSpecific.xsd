@@ -109,6 +109,7 @@
 								<xs:documentation>For corpora that have already been using keywords classification</xs:documentation>
 								<xs:appinfo>
 									<label>Keyword</label>
+									<recommended>true</recommended>
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
