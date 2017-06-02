@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
 <xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-ResourceCommon.xsd"/>
@@ -60,7 +61,7 @@
 			<xs:documentation>Groups together all information related to raw corpora</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="corpusSubtype" fixed="rawCorpus"/>
+			<xs:element name="corpusSubtype" type="xs:string" fixed="rawCorpus"/>
 			<!-- left as a sequence for audio, video, image parts to be inserted again at a later stage -->
 			<xs:element name="corpusMediaPartsType">
 				<xs:annotation>
@@ -98,7 +99,7 @@
 			<xs:documentation>Groups together all information related to annotated corpora</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="corpusSubtype" fixed="annotatedCorpus"/>
+			<xs:element name="corpusSubtype" type="xs:string" fixed="annotatedCorpus"/>
 			<!-- left as a sequence for audio, video, image parts to be inserted again at a later stage -->
 			<xs:element name="corpusMediaParts">
 				<xs:annotation>
@@ -330,7 +331,7 @@
 	</xs:complexType>
 	<xs:complexType name="annotationsInfoType">
 		<xs:sequence>
-			<xs:element name="corpusSubtype" fixed="annotations"/>
+			<xs:element name="corpusSubtype" type="xs:string" fixed="annotations"/>
 			<xs:element name="rawCorpus" type="ms:relatedResourceType"/>
 			<xs:element ref="ms:annotationInfo"/>
 		</xs:sequence>

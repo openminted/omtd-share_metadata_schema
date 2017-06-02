@@ -101,8 +101,8 @@
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="annotationSchema" type="ms:relatedResourceType" minOccurs="0"/>
-						<xs:element name="TDMMethod"/>
+						<xs:element ref="ms:annotationSchema" minOccurs="0"/>
+						<xs:element ref="ms:TDMMethod" minOccurs="0"/>
 						<xs:element name="algorithm" type="xs:string" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Training algorithm used for the model (e.g. maximum entropy, svm etc.)</xs:documentation>
@@ -415,9 +415,12 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element ref="ms:sizeInfo" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:appinfo>
-								<recommended>true</recommended></xs:appinfo></xs:annotation></xs:element>
+							<xs:annotation>
+								<xs:appinfo>
+									<recommended>true</recommended>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

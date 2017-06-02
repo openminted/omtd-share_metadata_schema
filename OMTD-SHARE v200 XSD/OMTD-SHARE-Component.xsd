@@ -698,7 +698,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="applicationFunction" minOccurs="0" maxOccurs="1">
+			<xs:element name="applicationFunction" type="ms:applicationType" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>Specifies the type of an end-user application, in terms of the function/task it performs</xs:documentation>
 					<xs:appinfo>
@@ -760,7 +760,7 @@
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="annotationSchema" minOccurs="0">
+						<xs:element ref="ms:annotationSchema" minOccurs="0">
 							<xs:annotation>
 								<xs:appinfo>
 									<recommended>true</recommended>
@@ -1103,7 +1103,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="annotationSchema" type="ms:relatedResourceType" minOccurs="0"/>
+			<xs:element ref="ms:annotationSchema" minOccurs="0"/>
 			<xs:element name="annotationLevels" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>

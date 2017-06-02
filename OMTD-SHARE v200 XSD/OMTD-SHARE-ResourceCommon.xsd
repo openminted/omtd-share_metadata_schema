@@ -768,7 +768,7 @@
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="annotationSchema" type="ms:relatedResourceType" minOccurs="0"/>
+			<xs:element ref="ms:annotationSchema" minOccurs="0"/>
 			<xs:element ref="ms:annotationResource" minOccurs="0">
 				<xs:annotation>
 					<xs:appinfo>
@@ -4117,6 +4117,15 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
+			<xs:element name="annotationSchema" type="ms:relatedResourceType">
+				<xs:annotation>
+					<xs:documentation>A set of elements and values designed to annotate data</xs:documentation>
+					<xs:appinfo>
+						<label>Annotation Schema</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+
 	<!--
 	<xs:element name="requiresHardware">
 		<xs:annotation>
