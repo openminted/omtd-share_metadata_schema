@@ -461,7 +461,7 @@
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element ref="ms:distributionLoc"/>
+			<xs:element ref="ms:distributionLoc" maxOccurs="unbounded"/>
 			<xs:element name="textFormats" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
