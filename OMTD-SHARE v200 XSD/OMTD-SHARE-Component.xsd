@@ -646,27 +646,20 @@
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:enumeration>
+						<xs:enumeration value="other">
+							<xs:annotation>
+								<xs:documentation>Value for componentType, to be used when the desired value is not included in the listed values</xs:documentation>
+								<xs:appinfo>
+									<label>Other</label>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<!--
 						<xs:enumeration value="platform">
 							<xs:annotation>
-								<xs:documentation>A technology that eases the development of new tools and services in the NLP field</xs:documentation>
+								<xs:documentation>A technology that eases the development and/or execution of new software programmes</xs:documentation>
 								<xs:appinfo>
 									<label>Platform</label>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="infrastructure">
-							<xs:annotation>
-								<xs:documentation>The basic structures and facilities required for the operation of a system</xs:documentation>
-								<xs:appinfo>
-									<label>Infrastructure</label>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="architecture">
-							<xs:annotation>
-								<xs:documentation>A technology that supports the flexible development of NLP applications, together with all the requested resources</xs:documentation>
-								<xs:appinfo>
-									<label>Architecture</label>
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:enumeration>
@@ -678,14 +671,7 @@
 								</xs:appinfo>
 							</xs:annotation>
 						</xs:enumeration>
-						<xs:enumeration value="other">
-							<xs:annotation>
-								<xs:documentation>Value for componentType, to be used when the desired value is not included in the listed values</xs:documentation>
-								<xs:appinfo>
-									<label>Other</label>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
+-->
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -1195,6 +1181,7 @@
 				</xs:complexType>
 			</xs:element>
 -->
+			<xs:element ref="ms:samplesLocation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="componentEvaluationInfoType">
@@ -1294,6 +1281,110 @@
 									<xs:enumeration value="automatic"/>
 								</xs:restriction>
 							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="goldStandardLocation" type="ms:httpURI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Link to the location of a Gold Standard dataset that can be used for evaluating the component</xs:documentation>
+					<xs:appinfo>
+						<label>Gold Standard Location</label>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="performanceIndicators" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="performanceIndicatorInfo" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Information on metrics that can be used as performance indicators of the component</xs:documentation>
+								<xs:appinfo>
+									<label>Performance indicator</label>
+								</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="metric">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="MAD">
+													<xs:annotation>
+														<xs:documentation>Mean annotations per document</xs:documentation>
+														<xs:appinfo>
+															<label>Mean annotations per document</label>
+														</xs:appinfo>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="MTDV">
+													<xs:annotation>
+														<xs:documentation>Mean time per document volume</xs:documentation>
+														<xs:appinfo>
+															<label>Mean time per document volume</label>
+														</xs:appinfo>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="MTSA">
+													<xs:annotation>
+														<xs:documentation>Mean time seek annotations</xs:documentation>
+														<xs:appinfo>
+															<label>Mean time seek annotations</label>
+														</xs:appinfo>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="ART">
+													<xs:annotation>
+														<xs:documentation>Average response time</xs:documentation>
+														<xs:appinfo>
+															<label>Average response time</label>
+														</xs:appinfo>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="MTBF">
+													<xs:annotation>
+														<xs:documentation>Mean time between failures</xs:documentation>
+														<xs:appinfo>
+															<label>Mean time between failures</label>
+														</xs:appinfo>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="MTTR">
+													<xs:annotation>
+														<xs:documentation>Mean time to repair</xs:documentation>
+														<xs:appinfo>
+															<label>Mean time to repair</label>
+														</xs:appinfo>
+													</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="other">
+													<xs:annotation>
+														<xs:documentation>Value to be used when no other value is applicable</xs:documentation>
+														<xs:appinfo>
+															<label>Other</label>
+														</xs:appinfo>
+													</xs:annotation>
+												</xs:enumeration>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="measure" type="xs:decimal">
+										<xs:annotation>
+											<xs:documentation>The measure calculated for the metric</xs:documentation>
+											<xs:appinfo>
+												<label>Measure</label>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="unit" type="xs:string" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Unit of measure for the metric</xs:documentation>
+											<xs:appinfo>
+												<label>Unit</label>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>

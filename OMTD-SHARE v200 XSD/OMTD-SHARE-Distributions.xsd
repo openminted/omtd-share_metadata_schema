@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿Type ur fucking name ! (Type ur Company -.-) -->
 <xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-Actors.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
@@ -9,7 +9,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="ms:distributionMedium"/>
-				<xs:element ref="ms:distributionURL" minOccurs="0">
+				<xs:element ref="ms:distributionLocation" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Any url where the resource can be downloaded from; please, use if the resource is "downloadable" and you have not uploaded the resource in the repository</xs:documentation>
 						<xs:appinfo>
@@ -214,22 +214,26 @@
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
+									<xs:enumeration value="dockerImage"/>
+									<xs:enumeration value="wrappedInGalaxy"/>
+									<xs:enumeration value="workflowFile"/>
+									<xs:enumeration value="other"/>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element ref="ms:distributionURL"/>
+						<xs:element ref="ms:distributionLocation"/>
+						<xs:element name="command" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>A command line used for the execution of a component</xs:documentation>
+								<xs:appinfo>
+									<relation>one-to-many</relation>
+									<label>Command</label>
+									<usage>To show if componentDistributionForm=webService</usage>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
-			</xs:element>
-			<xs:element name="command" type="xs:string" minOccurs="0" maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>A command line used for the execution of a component</xs:documentation>
-					<xs:appinfo>
-						<relation>one-to-many</relation>
-						<label>Command</label>
-						<usage>To show if componentDistributionForm=webService</usage>
-					</xs:appinfo>
-				</xs:annotation>
 			</xs:element>
 			<!--
 			<xs:element name="mavenID" minOccurs="0"/> -->
@@ -1296,12 +1300,12 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-	<xs:element name="distributionURL" type="ms:httpURI">
+	<xs:element name="distributionLocation" type="xs:string">
 		<xs:annotation>
-			<xs:documentation>Any url where the resource can be accessed from, either in a downloadable form or as a web executable command etc.</xs:documentation>
+			<xs:documentation>Any location (e.g. URL, repository, etc.) where the resource can be accessed from, either in a downloadable form or as a web executable command etc.</xs:documentation>
 			<xs:appinfo>
 				<relation>one-to-many</relation>
-				<label>Download URL</label>
+				<label>Distribution location</label>
 				<broader>dcat:downloadURL</broader>
 				<recommended>true</recommended>
 			</xs:appinfo>

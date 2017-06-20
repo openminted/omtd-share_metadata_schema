@@ -712,7 +712,7 @@
 			<xs:element name="samplesLocations" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="samplesLocation" type="ms:httpURI" minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="ms:samplesLocation" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Links a resource to a url (or url's) with samples of the resource or, in the case of tools, of samples of input and/or output processes</xs:documentation>
 								<xs:appinfo>
@@ -3956,176 +3956,184 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-				<xs:element name="TDMMethod">
-				<xs:annotation>
-					<xs:documentation/>
-					<xs:appinfo>
-						<recommended>true</recommended>
-						<relation>one-to-many</relation>
-						<label>TDM method</label>
-					</xs:appinfo>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="ruleBased">
+	<xs:element name="TDMMethod">
+		<xs:annotation>
+			<xs:documentation/>
+			<xs:appinfo>
+				<recommended>true</recommended>
+				<relation>one-to-many</relation>
+				<label>TDM method</label>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="ruleBased">
+					<xs:annotation>
+						<xs:documentation>A type of method that makes use of set(s) of rules to perform the relevant task.</xs:documentation>
+						<xs:appinfo>
+							<label>Rule-based</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="machineLearning">
+					<xs:annotation>
+						<xs:documentation>A method of data analysis that automates model building. Using algorithms that iteratively learn from data, machine learning allows computers to find hidden insights without being explicitly programmed where to look.</xs:documentation>
+						<xs:appinfo>
+							<label>Machine Learning</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="statisticalLearning">
+					<xs:annotation>
+						<xs:documentation>The process of using statistics and techniques related to statistics in order to understand and learn from your data so that you can predict its future.</xs:documentation>
+						<xs:appinfo>
+							<label>Statistical Learning</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="machineAndStatisticalLearning">
+					<xs:annotation>
+						<xs:documentation>Methods and techniques used either in machine learning or statistical learning</xs:documentation>
+						<xs:appinfo>
+							<label>Machine and Statistical Learning</label>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="regressionAnalysis">
+					<xs:annotation>
+						<xs:documentation>A statistical process for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when the focus is on the relationship between a dependent variable and one or more independent variables (or 'predictors').</xs:documentation>
+						<xs:appinfo>
+							<label>Regression Analysis</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+							<closeMatchFoster>regression</closeMatchFoster>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="regularisation">
+					<xs:annotation>
+						<xs:documentation>A process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting.</xs:documentation>
+						<xs:appinfo>
+							<label>Regularisation</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="instanceBasedLearning">
+					<xs:annotation>
+						<xs:documentation>A family of learning algorithms that, instead of performing explicit generalization, compares new problem instances with instances seen in training, which have been stored in memory.</xs:documentation>
+						<xs:appinfo>
+							<label>Instance-based Learning</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+							<closeMatchFoster>instance-based</closeMatchFoster>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="decisionTrees">
+					<xs:annotation>
+						<xs:documentation>A non-parametric supervised learning method used for classification and regression. The goal is to create a tree-like graph or model of decisions and their possible consequences by learning simple decision rules inferred from the data features.</xs:documentation>
+						<xs:appinfo>
+							<label>Decision Trees</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="bayesian">
+					<xs:annotation>
+						<xs:documentation>A method in probability and statistics based on Bayes' theorem, mainly related to statistical inference.</xs:documentation>
+						<xs:appinfo>
+							<label>Bayesian</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="kernelMethod">
+					<xs:annotation>
+						<xs:documentation>Any method used in pattern analysis that relies on kernel functions, which enable it to operate in a high-dimensional, implicit feature space without ever computing the coordinates of the data in that space, but rather by simply computing the inner products between the images of all pairs of data in the feature space.</xs:documentation>
+						<xs:appinfo>
+							<label>Kernel Method</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+							<closeMatchFoster>kernel methods</closeMatchFoster>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="clusteringMethod">
+					<xs:annotation>
+						<xs:documentation>Any method used in clustering or cluster analysis, i.e. in grouping a set of objects in such a way that objects in the same group (cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters).</xs:documentation>
+						<xs:appinfo>
+							<label>Clustering Method</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+							<closeMatchFoster>clustering methods</closeMatchFoster>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="associationRuleLearning">
+					<xs:annotation>
+						<xs:documentation>A machine learning method used in recognising relationships among variables in databases and extracted in the form of rules.</xs:documentation>
+						<xs:appinfo>
+							<label>Association Rule Learning</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+							<closeMatchFoster>association rules</closeMatchFoster>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="artificialNeuralNetwork">
+					<xs:annotation>
+						<xs:documentation>A computational model based on a large collection of simple neural units (artificial neurons), loosely analogous to the observed behavior of a biological brain's axons. These systems are self-learning and trained, rather than explicitly programmed.</xs:documentation>
+						<xs:appinfo>
+							<label>Artificial Neural Network</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+							<closeMatchFoster>artificial neural networks</closeMatchFoster>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="deepLearning">
+					<xs:annotation>
+						<xs:documentation>A branch of machine learning based on deep neural networks. A deep neural network (DNN) is an artificial neural network (ANN) with multiple hidden layers of units between the input and output layers.</xs:documentation>
+						<xs:appinfo>
+							<label>Deep Learning</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="ensembleMethod">
+					<xs:annotation>
+						<xs:documentation>Any method that uses multiple learning algorithms in an attempt to improve predictive performance not obtainable otherwise with any of the constituent learning algorithms.</xs:documentation>
+						<xs:appinfo>
+							<label>Ensemble Method</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+							<closeMatchFoster>ensembles</closeMatchFoster>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="dimensionalityReduction">
+					<xs:annotation>
+						<xs:documentation>A method based on reducing the number of random variables under consideration, via obtaining a set of principal variables.</xs:documentation>
+						<xs:appinfo>
+							<label>Dimensionality Reduction</label>
+							<broadMatch>Machine and Statistical Learning</broadMatch>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:enumeration>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="annotationSchema" type="ms:relatedResourceType">
+		<xs:annotation>
+			<xs:documentation>A set of elements and values designed to annotate data</xs:documentation>
+			<xs:appinfo>
+				<label>Annotation Schema</label>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+							<xs:element name="samplesLocation" type="ms:httpURI">
 							<xs:annotation>
-								<xs:documentation>A type of method that makes use of set(s) of rules to perform the relevant task.</xs:documentation>
+								<xs:documentation>Links a resource to a url (or url's) with samples of the resource or, in the case of tools, of samples of input and/or output processes</xs:documentation>
 								<xs:appinfo>
-									<label>Rule-based</label>
+									<label>Samples location</label>
+									<label-plural>Samples location</label-plural>
 								</xs:appinfo>
 							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="machineLearning">
-							<xs:annotation>
-								<xs:documentation>A method of data analysis that automates model building. Using algorithms that iteratively learn from data, machine learning allows computers to find hidden insights without being explicitly programmed where to look.</xs:documentation>
-								<xs:appinfo>
-									<label>Machine Learning</label>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="statisticalLearning">
-							<xs:annotation>
-								<xs:documentation>The process of using statistics and techniques related to statistics in order to understand and learn from your data so that you can predict its future.</xs:documentation>
-								<xs:appinfo>
-									<label>Statistical Learning</label>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="machineAndStatisticalLearning">
-							<xs:annotation>
-								<xs:documentation>Methods and techniques used either in machine learning or statistical learning</xs:documentation>
-								<xs:appinfo>
-									<label>Machine and Statistical Learning</label>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="regressionAnalysis">
-							<xs:annotation>
-								<xs:documentation>A statistical process for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when the focus is on the relationship between a dependent variable and one or more independent variables (or 'predictors').</xs:documentation>
-								<xs:appinfo>
-									<label>Regression Analysis</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-									<closeMatchFoster>regression</closeMatchFoster>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="regularisation">
-							<xs:annotation>
-								<xs:documentation>A process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting.</xs:documentation>
-								<xs:appinfo>
-									<label>Regularisation</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="instanceBasedLearning">
-							<xs:annotation>
-								<xs:documentation>A family of learning algorithms that, instead of performing explicit generalization, compares new problem instances with instances seen in training, which have been stored in memory.</xs:documentation>
-								<xs:appinfo>
-									<label>Instance-based Learning</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-									<closeMatchFoster>instance-based</closeMatchFoster>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="decisionTrees">
-							<xs:annotation>
-								<xs:documentation>A non-parametric supervised learning method used for classification and regression. The goal is to create a tree-like graph or model of decisions and their possible consequences by learning simple decision rules inferred from the data features.</xs:documentation>
-								<xs:appinfo>
-									<label>Decision Trees</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="bayesian">
-							<xs:annotation>
-								<xs:documentation>A method in probability and statistics based on Bayes' theorem, mainly related to statistical inference.</xs:documentation>
-								<xs:appinfo>
-									<label>Bayesian</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="kernelMethod">
-							<xs:annotation>
-								<xs:documentation>Any method used in pattern analysis that relies on kernel functions, which enable it to operate in a high-dimensional, implicit feature space without ever computing the coordinates of the data in that space, but rather by simply computing the inner products between the images of all pairs of data in the feature space.</xs:documentation>
-								<xs:appinfo>
-									<label>Kernel Method</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-									<closeMatchFoster>kernel methods</closeMatchFoster>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="clusteringMethod">
-							<xs:annotation>
-								<xs:documentation>Any method used in clustering or cluster analysis, i.e. in grouping a set of objects in such a way that objects in the same group (cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters).</xs:documentation>
-								<xs:appinfo>
-									<label>Clustering Method</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-									<closeMatchFoster>clustering methods</closeMatchFoster>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="associationRuleLearning">
-							<xs:annotation>
-								<xs:documentation>A machine learning method used in recognising relationships among variables in databases and extracted in the form of rules.</xs:documentation>
-								<xs:appinfo>
-									<label>Association Rule Learning</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-									<closeMatchFoster>association rules</closeMatchFoster>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="artificialNeuralNetwork">
-							<xs:annotation>
-								<xs:documentation>A computational model based on a large collection of simple neural units (artificial neurons), loosely analogous to the observed behavior of a biological brain's axons. These systems are self-learning and trained, rather than explicitly programmed.</xs:documentation>
-								<xs:appinfo>
-									<label>Artificial Neural Network</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-									<closeMatchFoster>artificial neural networks</closeMatchFoster>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="deepLearning">
-							<xs:annotation>
-								<xs:documentation>A branch of machine learning based on deep neural networks. A deep neural network (DNN) is an artificial neural network (ANN) with multiple hidden layers of units between the input and output layers.</xs:documentation>
-								<xs:appinfo>
-									<label>Deep Learning</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="ensembleMethod">
-							<xs:annotation>
-								<xs:documentation>Any method that uses multiple learning algorithms in an attempt to improve predictive performance not obtainable otherwise with any of the constituent learning algorithms.</xs:documentation>
-								<xs:appinfo>
-									<label>Ensemble Method</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-									<closeMatchFoster>ensembles</closeMatchFoster>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="dimensionalityReduction">
-							<xs:annotation>
-								<xs:documentation>A method based on reducing the number of random variables under consideration, via obtaining a set of principal variables.</xs:documentation>
-								<xs:appinfo>
-									<label>Dimensionality Reduction</label>
-									<broadMatch>Machine and Statistical Learning</broadMatch>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="annotationSchema" type="ms:relatedResourceType">
-				<xs:annotation>
-					<xs:documentation>A set of elements and values designed to annotate data</xs:documentation>
-					<xs:appinfo>
-						<label>Annotation Schema</label>
-					</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-
+						</xs:element>
 	<!--
 	<xs:element name="requiresHardware">
 		<xs:annotation>
