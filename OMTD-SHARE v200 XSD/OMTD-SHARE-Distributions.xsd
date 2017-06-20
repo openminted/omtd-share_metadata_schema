@@ -169,16 +169,26 @@
 		<xs:annotation>
 			<xs:appinfo>
 				<render-short>{componentDistributionForm}, licensing terms: {licenceInfo}</render-short>
+				<label>Component distribution</label>
 			</xs:appinfo>
 		</xs:annotation>
 		<xs:sequence>
 			<!-- although from components with Maven/Docker, we get them from the identifier, I prefer to keep it here and duplicate it, because the semantics are different -->
 			<xs:element name="componentLoc">
+		<xs:annotation>
+			<xs:documentation>Information on how to access/download and invoke a component</xs:documentation>
+			<xs:appinfo>
+				<label>Component access information</label>
+			</xs:appinfo>
+		</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="componentDistributionForm">
 							<xs:annotation>
 								<xs:documentation>Specifies the form of distribution of the component (e.g. as source code, executable programme etc.)</xs:documentation>
+											<xs:appinfo>
+												<label>Component distribution form</label>
+											</xs:appinfo>
 							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
@@ -214,10 +224,38 @@
 											</xs:appinfo>
 										</xs:annotation>
 									</xs:enumeration>
-									<xs:enumeration value="dockerImage"/>
-									<xs:enumeration value="wrappedInGalaxy"/>
-									<xs:enumeration value="workflowFile"/>
-									<xs:enumeration value="other"/>
+									<xs:enumeration value="dockerImage">
+										<xs:annotation>
+											<xs:documentation>For components delivered as docker images</xs:documentation>
+											<xs:appinfo>
+												<label>Docker image</label>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="wrappedInGalaxy">
+										<xs:annotation>
+											<xs:documentation>For forms of components that are delivered wrapped in the Galaxy workflow system</xs:documentation>
+											<xs:appinfo>
+												<label>Wrapped in Galaxy</label>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="workflowFile">
+										<xs:annotation>
+											<xs:documentation>A workflow description file following a standard language, such as a CWL</xs:documentation>
+											<xs:appinfo>
+												<label>Workflow file</label>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="other">
+										<xs:annotation>
+											<xs:documentation>Value to be used when none of the enumerated values applies</xs:documentation>
+											<xs:appinfo>
+												<label>Other</label>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:enumeration>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
