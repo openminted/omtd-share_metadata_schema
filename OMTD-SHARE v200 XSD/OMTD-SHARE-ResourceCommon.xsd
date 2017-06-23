@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿pl (pl) -->
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-ISOVocabularies.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-Actors.xsd"/>
@@ -4125,15 +4125,15 @@
 			</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
-							<xs:element name="samplesLocation" type="ms:httpURI">
-							<xs:annotation>
-								<xs:documentation>Links a resource to a url (or url's) with samples of the resource or, in the case of tools, of samples of input and/or output processes</xs:documentation>
-								<xs:appinfo>
-									<label>Samples location</label>
-									<label-plural>Samples location</label-plural>
-								</xs:appinfo>
-							</xs:annotation>
-						</xs:element>
+	<xs:element name="samplesLocation" type="ms:httpURI">
+		<xs:annotation>
+			<xs:documentation>Links a resource to a url (or url's) with samples of the resource or, in the case of tools, of samples of input and/or output processes</xs:documentation>
+			<xs:appinfo>
+				<label>Samples location</label>
+				<label-plural>Samples location</label-plural>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
 	<!--
 	<xs:element name="requiresHardware">
 		<xs:annotation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿Type ur fucking name ! (Type ur Company -.-) -->
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-Actors.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-GlobalTypes.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-TextSpecific.xsd"/>
@@ -175,20 +175,20 @@
 		<xs:sequence>
 			<!-- although from components with Maven/Docker, we get them from the identifier, I prefer to keep it here and duplicate it, because the semantics are different -->
 			<xs:element name="componentLoc">
-		<xs:annotation>
-			<xs:documentation>Information on how to access/download and invoke a component</xs:documentation>
-			<xs:appinfo>
-				<label>Component access information</label>
-			</xs:appinfo>
-		</xs:annotation>
+				<xs:annotation>
+					<xs:documentation>Information on how to access/download and invoke a component</xs:documentation>
+					<xs:appinfo>
+						<label>Component access information</label>
+					</xs:appinfo>
+				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="componentDistributionForm">
 							<xs:annotation>
 								<xs:documentation>Specifies the form of distribution of the component (e.g. as source code, executable programme etc.)</xs:documentation>
-											<xs:appinfo>
-												<label>Component distribution form</label>
-											</xs:appinfo>
+								<xs:appinfo>
+									<label>Component distribution form</label>
+								</xs:appinfo>
 							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0" xml:lang="en">
+<xs:schema xmlns:ms="http://www.meta-share.org/OMTD-SHARE_XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.meta-share.org/OMTD-SHARE_XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.1" xml:lang="en">
 	<xs:include schemaLocation="./OMTD-SHARE-ISOVocabularies.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-Actors.xsd"/>
 	<xs:include schemaLocation="./OMTD-SHARE-Distributions.xsd"/>
@@ -1584,8 +1584,7 @@
 	<!-- definition of metadata header -->
 	<xs:complexType name="baseMetadataRecord">
 		<xs:sequence>
-			<xs:element name="metadataHeaderInfo" type="ms:metadataHeaderInfoType">
-			</xs:element>
+			<xs:element name="metadataHeaderInfo" type="ms:metadataHeaderInfoType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="metadataHeaderInfoType">
